@@ -54,7 +54,7 @@ public class Rectangle {
 
     /**
      * Prints the rectangle
-     * @param g
+     * @param g graphics
      */
     public void drawRectangle(Graphics g) {
 

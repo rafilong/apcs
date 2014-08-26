@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Contains all Rectangle and Star objects
@@ -91,9 +92,15 @@ public class Flag {
     }
 
     /**
-     * Finds the current size of the frame
+     * Finds the scale of the frame
+     * @return the height of the flag
      */
-    public static java.awt.Rectangle getFrameSize() {
-        return frame.getBounds();
+    public static double getFrameSize() {
+        Dimension bounds = frame.getContentPane().getSize();
+        if (bounds.getWidth() / bounds.getHeight() > 1.9) {
+            return bounds.getHeight();
+        } else {
+            return bounds.getWidth() / 1.9;
+        }
     }
 }
