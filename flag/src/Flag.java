@@ -43,21 +43,28 @@ public class Flag {
      * @param args unused parameter
      */
     public static void main(String args[]) {
-
+        initStripes();
+        initUnionBlue();
+        initStars();
     }
 
     /**
      * Adds values to all of the stripe objects
      */
     public static void initStripes() {
-
+        for (int i = 0; i < 7; i++) {
+            stripes[i] = new Rectangle(unionWidth, stripeHeight * i, smallStripeWidth, stripeHeight);
+        }
+        for (int i = 7; i < 13; i++) {
+            stripes[i] = new Rectangle(0, stripeHeight * i, largeStripeWidth, stripeHeight);
+        }
     }
 
     /**
      * Adds values to the union object
      */
     public static void initUnionBlue() {
-
+        unionBlue = new Rectangle(0, 0, unionWidth, unionHeight);
     }
 
     /**
