@@ -2,19 +2,11 @@
  * Contains all Rectangle and Star objects
  */
 public class Flag {
-    /**
-     * The 13 strips in the flag
-     */
+    /** The 13 strips in the flag */
     public static Rectangle[] stripes = new Rectangle[13];
-
-    /**
-     * The blue rectangle on the union
-     */
+    /** The blue rectangle on the union */
     public static Rectangle unionBlue;
-
-    /**
-     * The 50 stars on the flag
-     */
+    /** The 50 stars on the flag */
     public static Star[] stars = new Star[50];
 
     /** The width of the smaller stripes in relation to the total height */
