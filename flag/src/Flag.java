@@ -1,7 +1,12 @@
+import javax.swing.*;
+
 /**
  * Contains all Rectangle and Star objects
  */
 public class Flag {
+    /** The frame */
+    public static JFrame frame = new JFrame();
+
     /** The 13 strips in the flag */
     public static Rectangle[] stripes = new Rectangle[13];
     /** The blue rectangle on the union */
@@ -38,12 +43,31 @@ public class Flag {
         initStripes();
         initUnionBlue();
         initStars();
+
+        initFrame();
+    }
+
+    /**
+     * Initializes the frame
+     */
+    private static void initFrame() {
+        //creates a new display object
+        Display display = new Display();
+
+        //sets program to terminate on window close
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        //sets the size of the frame to by 400 by 400
+        frame.setSize(1140, 600);
+        //sets the frame to be visible
+        frame.setVisible(true);
+        //adds the previously created display object to the frame
+        frame.add(display);
     }
 
     /**
      * Adds values to all of the stripe objects
      */
-    public static void initStripes() {
+    private static void initStripes() {
         for (int i = 0; i < 7; i++) {
             stripes[i] = new Rectangle(unionWidth, stripeHeight * i, smallStripeWidth, stripeHeight);
         }
@@ -55,14 +79,21 @@ public class Flag {
     /**
      * Adds values to the union object
      */
-    public static void initUnionBlue() {
+    private static void initUnionBlue() {
         unionBlue = new Rectangle(0, 0, unionWidth, unionHeight);
     }
 
     /**
      * Adds values to the star objects
      */
-    public static void initStars() {
+    private static void initStars() {
 
+    }
+
+    /**
+     * Finds the current size of the frame
+     */
+    public static java.awt.Rectangle getFrameSize() {
+        return frame.getBounds();
     }
 }
