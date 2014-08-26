@@ -56,7 +56,8 @@ public class Rectangle {
      * Prints the rectangle
      * @param g graphics
      */
-    public void drawRectangle(Graphics g) {
-
+    public void drawRectangle(Graphics g, Color color) {
+        g.setColor(color);
+        g.fillRect((int) (ratioX * Display.flagHeight), (int) (ratioY * Display.flagHeight), (int) (ratioW * Display.flagHeight), (int) (ratioH * Display.flagHeight));
     }
 }
