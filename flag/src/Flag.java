@@ -97,10 +97,19 @@ public class Flag {
      */
     public static double getFrameSize() {
         Dimension bounds = frame.getContentPane().getSize();
-        if (bounds.getWidth() / bounds.getHeight() > 1.9) {
-            return bounds.getHeight();
+        double width = bounds.getWidth();
+        double height = bounds.getHeight();
+
+        if (width / height > 1.9) {
+            // width is larger than proportion
+            Display.centerXOffset = (width - height * 1.9) / 2;
+            Display.centerYOffset = 0;
+            return height;
         } else {
-            return bounds.getWidth() / 1.9;
+            // height is larger than proportion
+            Display.centerXOffset = 0;
+            Display.centerYOffset = (height - width / 1.9) / 2;
+            return width / 1.9;
         }
     }
 }

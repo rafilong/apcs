@@ -7,6 +7,10 @@ import java.awt.*;
 public class Display extends JComponent {
     /** The height of the flag in proportion to frame size */
     public static double flagHeight = 0;
+    /** The amount to offset the X in order to keep the flag centered */
+    public static double centerXOffset = 0;
+    /** The amount to offset the Y in order to keep the flag centered */
+    public static double centerYOffset = 0;
 
     /**
      * Empty constructor

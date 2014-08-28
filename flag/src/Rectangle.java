@@ -58,6 +58,9 @@ public class Rectangle {
      */
     public void drawRectangle(Graphics g, Color color) {
         g.setColor(color);
-        g.fillRect((int) (ratioX * Display.flagHeight), (int) (ratioY * Display.flagHeight), (int) (ratioW * Display.flagHeight), (int) (ratioH * Display.flagHeight));
+        g.fillRect((int) (Display.centerXOffset + ratioX * Display.flagHeight),
+                (int) (Display.centerYOffset + ratioY * Display.flagHeight),
+                (int) (ratioW * Display.flagHeight),
+                (int) (ratioH * Display.flagHeight));
     }
 }
