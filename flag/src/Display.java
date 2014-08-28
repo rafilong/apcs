@@ -27,18 +27,18 @@ public class Display extends JComponent {
     public void paint(Graphics g) {
         flagHeight = Flag.getFrameSize();
 
-        Flag.unionBlue.drawRectangle(g, Color.BLUE);
+        Flag.unionBlue.drawRectangle(g, new Color(0x3c3b6e));
 
         for (int i = 0; i < 13; i++) {
             if (i % 2 != 0) {
-                Flag.stripes[i].drawRectangle(g, Color.WHITE);
+                Flag.stripes[i].drawRectangle(g, new Color(0xffffff));
             } else {
-                Flag.stripes[i].drawRectangle(g, Color.RED);
+                Flag.stripes[i].drawRectangle(g, new Color(0xb22234));
             }
         }
 
-//        for (int i = 0; i < 50; i++) {
-//            Flag.stars[i].drawStar(g);
-//        }
+        for (int i = 0; i < 50; i++) {
+            Flag.stars[i].drawStar(g, new Color(0xffffff));
+        }
     }
 }

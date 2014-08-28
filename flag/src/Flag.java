@@ -25,7 +25,7 @@ public class Flag {
     /** The width of the union in relation to the total height */
     private static double unionWidth = 0.76;
     /** The height of the union in relation to the total height */
-    private static double unionHeight = 7.0 / 13.0;
+    private static double unionHeight = (1.0 / 13.0) * 7.0;
 
     /** The diameter of the star in relation to the total height */
     private static double starDiameter = 0.0616;
@@ -88,7 +88,24 @@ public class Flag {
      * Adds values to the star objects
      */
     private static void initStars() {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 6; j++) {
+                stars[i * 11 + j] = new Star(xStarOffset + xStarOffset * j * 2,
+                        yStarOffset + yStarOffset * i * 2,
+                        starDiameter);
+            }
+            for (int j = 6; j < 11; j++) {
+                stars[i * 11 + j] = new Star(xStarOffset * 2 + xStarOffset * j * 2,
+                        yStarOffset + yStarOffset * (i + 1) * 2,
+                        starDiameter);
+            }
+        }
 
+        for (int j = 0; j < 6; j++) {
+            stars[j + 44] = new Star(xStarOffset + xStarOffset * j * 2,
+                    yStarOffset * 9,
+                    starDiameter);
+        }
     }
 
     /**

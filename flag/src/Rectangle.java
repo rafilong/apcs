@@ -13,6 +13,13 @@ public class Rectangle {
     /** The height of the rectangle in relation to the total size of the flag */
     private double ratioH = 0;
 
+    /**
+     * Basic rectangle constructor
+     * @param ratioX see variable documentation
+     * @param ratioY see variable documentation
+     * @param ratioW see variable documentation
+     * @param ratioH see variable documentation
+     */
     public Rectangle(double ratioX, double ratioY, double ratioW, double ratioH) {
         this.ratioX = ratioX;
         this.ratioY = ratioY;
