@@ -1,8 +1,15 @@
+/*
+ * AP Computer Science Flag Project
+ * Code written by Rafi Long
+ * See code for documentation
+ */
+
 import javax.swing.*;
 import java.awt.*;
 
 /**
  * Contains all Rectangle and Star objects
+ * Finds the offset of the flag to keep the flag centered
  */
 public class Flag {
     /** The frame */
@@ -11,7 +18,7 @@ public class Flag {
     /** The 13 strips in the flag */
     public static Rectangle[] stripes = new Rectangle[13];
     /** The blue rectangle on the union */
-    public static Rectangle unionBlue;
+    public static Rectangle[] unionBlue = new Rectangle[7];
     /** The 50 stars on the flag */
     public static Star[] stars = new Star[50];
 
@@ -24,8 +31,6 @@ public class Flag {
 
     /** The width of the union in relation to the total height */
     private static double unionWidth = 0.76;
-    /** The height of the union in relation to the total height */
-    private static double unionHeight = (1.0 / 13.0) * 7.0;
 
     /** The diameter of the star in relation to the total height */
     private static double starDiameter = 0.0616;
@@ -69,11 +74,8 @@ public class Flag {
      * Adds values to all of the stripe objects
      */
     private static void initStripes() {
-        for (int i = 0; i < 7; i++) {
-            stripes[i] = new Rectangle(unionWidth, stripeHeight * i, smallStripeWidth, stripeHeight);
-        }
-        for (int i = 7; i < 13; i++) {
-            stripes[i] = new Rectangle(0, stripeHeight * i, largeStripeWidth, stripeHeight);
+        for (int row = 0; row < 13; row++) {
+            stripes[row] = new Rectangle(0, stripeHeight * row, largeStripeWidth, stripeHeight);
         }
     }
 
@@ -81,30 +83,31 @@ public class Flag {
      * Adds values to the union object
      */
     private static void initUnionBlue() {
-        unionBlue = new Rectangle(0, 0, unionWidth, unionHeight);
+        for (int row = 0; row < 7; row++) {
+            unionBlue[row] = new Rectangle(0, stripeHeight * row, unionWidth, stripeHeight);
+        }
     }
 
     /**
      * Adds values to the star objects
      */
     private static void initStars() {
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 6; j++) {
-                stars[i * 11 + j] = new Star(xStarOffset + xStarOffset * j * 2,
-                        yStarOffset + yStarOffset * i * 2,
-                        starDiameter);
-            }
-            for (int j = 6; j < 11; j++) {
-                stars[i * 11 + j] = new Star(xStarOffset * 2 + xStarOffset * j * 2,
-                        yStarOffset + yStarOffset * (i + 1) * 2,
-                        starDiameter);
+        // Initializes rows of stars with 6 stars
+        for (int row = 0; row < 5; row++) {
+            for (int column = 0; column < 6; column++) {
+                double xOffset = xStarOffset + xStarOffset * 2 * column;
+                double yOffset = yStarOffset + yStarOffset * 2 * row;
+                stars[row * 6 + column] = new Star(xOffset, yOffset, starDiameter);
             }
         }
 
-        for (int j = 0; j < 6; j++) {
-            stars[j + 44] = new Star(xStarOffset + xStarOffset * j * 2,
-                    yStarOffset * 9,
-                    starDiameter);
+        //Initializes rows of stars with 5 stars
+        for (int row = 0; row < 4; row++) {
+            for (int column = 0; column < 5; column++) {
+                double xOffset = xStarOffset * 2 * (column + 1);
+                double yOffset = yStarOffset * 2 * (row + 1);
+                stars[row * 5 + column + 30] = new Star(xOffset, yOffset, starDiameter);
+            }
         }
     }
 

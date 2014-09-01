@@ -1,7 +1,14 @@
+/*
+ * AP Computer Science Flag Project
+ * Code written by Rafi Long
+ * See code for documentation
+ */
+
 import java.awt.*;
 
 /**
- * A class that describes a rectangle of particular size and location
+ * Describes a rectangle of particular size and location in relation to the height of the flag
+ * Draws the rectangle
  */
 public class Rectangle {
     /** The distance the rectangle is on the X axis in relation to the total size of the flag */
@@ -68,6 +75,6 @@ public class Rectangle {
         g.fillRect((int) (Display.centerXOffset + ratioX * Display.flagHeight),
                 (int) (Display.centerYOffset + ratioY * Display.flagHeight),
                 (int) (ratioW * Display.flagHeight),
-                (int) (ratioH * Display.flagHeight));
+                (int) (ratioH * Display.flagHeight) + 1);
     }
 }
