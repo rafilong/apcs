@@ -74,6 +74,8 @@ public class Flag {
      * Adds values to all of the stripe objects
      */
     private static void initStripes() {
+        // The stripes don't have to be separated by color, as the color is not coded into the object, and is instead
+        //  created by the paint function in the Display class
         for (int row = 0; row < 13; row++) {
             stripes[row] = new Rectangle(0, stripeHeight * row, largeStripeWidth, stripeHeight);
         }
@@ -83,6 +85,7 @@ public class Flag {
      * Adds values to the union object
      */
     private static void initUnionBlue() {
+        // The union is divided into 7 parts in order to avoid rounding errors exposed by graphics
         for (int row = 0; row < 7; row++) {
             unionBlue[row] = new Rectangle(0, stripeHeight * row, unionWidth, stripeHeight);
         }
@@ -116,17 +119,18 @@ public class Flag {
      * @return the height of the flag
      */
     public static double getFrameSize() {
+        // Finds the width and the height of the frame
         Dimension bounds = frame.getContentPane().getSize();
         double width = bounds.getWidth();
         double height = bounds.getHeight();
 
         if (width / height > 1.9) {
-            // width is larger than proportion
+            // if the width is larger than proportion, then the XOffset is set to make the x in proportion to the y
             Display.centerXOffset = (width - height * 1.9) / 2;
             Display.centerYOffset = 0;
             return height;
         } else {
-            // height is larger than proportion
+            // if the height is larger than proportion, then the YOffset is set to make the y in proportion to the x
             Display.centerXOffset = 0;
             Display.centerYOffset = (height - width / 1.9) / 2;
             return width / 1.9;

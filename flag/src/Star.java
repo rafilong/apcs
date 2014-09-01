@@ -39,16 +39,20 @@ public class Star {
     public void drawStar(Graphics g, Color color) {
         g.setColor(color);
 
+        // The x points and the y points
         int[] xPoints = new int[10];
         int[] yPoints = new int[10];
 
         for (int triangle = 0; triangle < 5; triangle++) {
+            // A holder for the points returned by findPointOnStar
             double[] points;
 
+            // Finds a point on the inner circle of the star, and adds to the list of points
             points = findPointOnStar((234 + triangle * 72) % 360, ratioD * .382);
             xPoints[triangle * 2] = (int) points[0];
             yPoints[triangle * 2] = (int) points[1];
 
+            // Finds the corresponding point on the outer circle of the star, and adds to the list of points
             points = findPointOnStar((270 + triangle * 72) % 360, ratioD);
             xPoints[1 + triangle * 2] = (int) points[0];
             yPoints[1 + triangle * 2] = (int) points[1];
@@ -64,12 +68,16 @@ public class Star {
      * @return the x and the
      */
     public double[] findPointOnStar(double degree, double ratioDiameter) {
+        // Finds the x and y point as if the center of the star is origin
         double xPoint = Math.cos(Math.toRadians(degree)) * ratioDiameter / 2;
         double yPoint = Math.sin(Math.toRadians(degree)) * ratioDiameter / 2;
 
-        double[] xyPoint = {xPoint * Display.flagHeight + Display.centerXOffset + ratioX * Display.flagHeight,
-                yPoint * Display.flagHeight + Display.centerYOffset + ratioY * Display.flagHeight};
+        // Adds offsets (ratioX and Display.centerXOffset) so origin is the edge of the screen, and multiplies
+        //  proportions by the flag height to convert to pixels
+        double[] xyPoint = {(xPoint + ratioX) * Display.flagHeight + Display.centerXOffset,
+                (yPoint + ratioY) * Display.flagHeight + Display.centerYOffset};
 
+        // Returns the fixed x and y points
         return xyPoint;
     }
 }

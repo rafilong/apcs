@@ -35,43 +35,12 @@ public class Rectangle {
     }
 
     /**
-     * Returns the x
-     * @return ratioX
-     */
-    public double getRatioX() {
-        return ratioX;
-    }
-
-    /**
-     * Returns the y
-     * @return ratioY
-     */
-    public double getRatioY() {
-        return ratioY;
-    }
-
-    /**
-     * Returns the width
-     * @return ratioW
-     */
-    public double getRatioW() {
-        return ratioW;
-    }
-
-    /**
-     * Returns the height
-     * @return ratioH
-     */
-    public double getRatioH() {
-        return ratioH;
-    }
-
-    /**
      * Prints the rectangle
      * @param g graphics
      */
     public void drawRectangle(Graphics g, Color color) {
         g.setColor(color);
+        // Adds offsets to the x and y, and multiplies the proportional x and y to the height to convert to pixels
         g.fillRect((int) (Display.centerXOffset + ratioX * Display.flagHeight),
                 (int) (Display.centerYOffset + ratioY * Display.flagHeight),
                 (int) (ratioW * Display.flagHeight),
