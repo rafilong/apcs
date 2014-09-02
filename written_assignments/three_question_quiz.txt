@@ -1,0 +1,30 @@
+Three Question Quiz for a Java Class
+
+Written by Rafi Long
+
+
+What are good reasons why to use getters and setters, instead of a public variable?
+(a) So you can easily change what is get and set
+(b) So your getters and setters can access multiple variables in the background
+(c) So you can avoid using public variables
+(d) All of the above
+
+(d), all of the above, is correct
+
+
+Check all valid reasons to encapsulate code:
+X So you can avoid having to encapsulate it later if you need it
+X Because instead of changing the code in every place, you can just change it in the method
+O So your code is longer
+X To make your code easier to understand
+O Because it is fun to make more methods
+O Because having more methods makes it easier to pass variables that you need
+X To make documentation more specific
+
+Answers marked with an X are correct, O are incorrect
+
+
+Having a(n) _____ allows you to avoid declaring a bunch of objects that all have a similar purpose.
+(For example, instead of having variables named star1, star2, star3, ect, you can just use this)
+
+Answer is an array
