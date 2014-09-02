@@ -30,3 +30,14 @@ diameter of the star divided by 2 (the diameter was given with all of the other 
 drawStar method). By using cos for the x, and sin for the y, you can very easily determine the point's position in
 relation to the center of the star. The point itself is found by adding these differences to the coordinates of the
 center of the star.
+
+===
+
+Errors:
+
+The union is divided into 7 stripes in order to avoid rounding errors. When the union was one rectangle, it could be
+either be one pixel larger or one pixel smaller than the first 7 stripes. By dividing it into 7 stripes, it is always
+the same size as the first 7 stripes. However, when the flag is very small, you can see very small gaps between the
+separate pieces of the union. This could be avoided by drawing the union as 2 pieces, one small piece at the bottom and
+one big piece, but as the problem only shows up when the flag is small enough that it is impossible to make out the
+stars, it makes not very much sense to try to fix the problem.
