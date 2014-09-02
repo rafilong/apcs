@@ -23,21 +23,21 @@ public class Flag {
     public static Star[] stars = new Star[50];
 
     /** The width of the smaller stripes in relation to the total height */
-    private static double smallStripeWidth = 1.14;
+    private static final double smallStripeWidth = 1.14;
     /** The width of the larger stripes in relation to the total height */
-    private static double largeStripeWidth = 1.9;
+    private static final double largeStripeWidth = 1.9;
     /** The height in relation to the total height */
-    private static double stripeHeight = 1.0 / 13.0;
+    private static final double stripeHeight = 1.0 / 13.0;
 
     /** The width of the union in relation to the total height */
-    private static double unionWidth = 0.76;
+    private static final double unionWidth = 0.76;
 
     /** The diameter of the star in relation to the total height */
-    private static double starDiameter = 0.0616;
+    private static final double starDiameter = 0.0616;
     /** The offset of the star on the x axis in relation to the total height */
-    private static double xStarOffset = 0.063;
+    private static final double xStarOffset = 0.063;
     /** The offset of the star on the y axis in relation to the total height */
-    private static double yStarOffset = 0.054;
+    private static final double yStarOffset = 0.054;
 
 
     /**
@@ -122,6 +122,7 @@ public class Flag {
      */
     public static double getFrameSize() {
         // Finds the width and the height of the frame
+        /* Tyler helped with choosing between using .getFrame and .getContent Pane */
         Dimension bounds = frame.getContentPane().getSize();
         double width = bounds.getWidth();
         double height = bounds.getHeight();
