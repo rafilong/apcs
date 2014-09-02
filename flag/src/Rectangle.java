@@ -44,6 +44,6 @@ public class Rectangle {
         g.fillRect((int) (Display.centerXOffset + ratioX * Display.flagHeight),
                 (int) (Display.centerYOffset + ratioY * Display.flagHeight),
                 (int) (ratioW * Display.flagHeight),
-                (int) (ratioH * Display.flagHeight) + 1);
+                (int) (ratioH * Display.flagHeight));
     }
 }

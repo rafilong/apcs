@@ -86,9 +86,11 @@ public class Flag {
      */
     private static void initUnionBlue() {
         // The union is divided into 7 parts in order to avoid rounding errors exposed by graphics
-        for (int row = 0; row < 7; row++) {
-            unionBlue[row] = new Rectangle(0, stripeHeight * row, unionWidth, stripeHeight);
+        // The first 6 parts are initialized first with a larger height in order to avoid white space between stripes
+        for (int row = 0; row < 6; row++) {
+            unionBlue[row] = new Rectangle(0,  stripeHeight * row, unionWidth, stripeHeight + 0.01);
         }
+        unionBlue[6] = new Rectangle(0,  stripeHeight * 6, unionWidth, stripeHeight);
     }
 
     /**
