@@ -77,7 +77,11 @@ public class Flag {
         // The stripes don't have to be separated by color, as the color is not coded into the object, and is instead
         //  created by the paint function in the Display class
         for (int row = 0; row < 13; row++) {
-            stripes[row] = new Rectangle(0, stripeHeight * row, largeStripeWidth, stripeHeight);
+            if (row % 2 != 0) {
+                stripes[row] = new Rectangle(0, stripeHeight * row, largeStripeWidth, stripeHeight, new Color(0xffffff));
+            } else {
+                stripes[row] = new Rectangle(0, stripeHeight * row, largeStripeWidth, stripeHeight, new Color(0xb22234));
+            }
         }
     }
 
@@ -88,9 +92,9 @@ public class Flag {
         // The union is divided into 7 parts in order to avoid rounding errors exposed by graphics
         // The first 6 parts are initialized first with a larger height in order to avoid white space between stripes
         for (int row = 0; row < 6; row++) {
-            unionBlue[row] = new Rectangle(0,  stripeHeight * row, unionWidth, stripeHeight + 0.01);
+            unionBlue[row] = new Rectangle(0,  stripeHeight * row, unionWidth, stripeHeight + 0.01, new Color(0x3c3b6e));
         }
-        unionBlue[6] = new Rectangle(0,  stripeHeight * 6, unionWidth, stripeHeight);
+        unionBlue[6] = new Rectangle(0,  stripeHeight * 6, unionWidth, stripeHeight, new Color(0x3c3b6e));
     }
 
     /**
@@ -102,7 +106,7 @@ public class Flag {
             for (int column = 0; column < 6; column++) {
                 double xOffset = xStarOffset + xStarOffset * 2 * column;
                 double yOffset = yStarOffset + yStarOffset * 2 * row;
-                stars[row * 6 + column] = new Star(xOffset, yOffset, starDiameter);
+                stars[row * 6 + column] = new Star(xOffset, yOffset, starDiameter, new Color(0xffffff));
             }
         }
 
@@ -111,7 +115,7 @@ public class Flag {
             for (int column = 0; column < 5; column++) {
                 double xOffset = xStarOffset * 2 * (column + 1);
                 double yOffset = yStarOffset * 2 * (row + 1);
-                stars[row * 5 + column + 30] = new Star(xOffset, yOffset, starDiameter);
+                stars[row * 5 + column + 30] = new Star(xOffset, yOffset, starDiameter, new Color(0xffffff));
             }
         }
     }

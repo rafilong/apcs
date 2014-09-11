@@ -20,6 +20,9 @@ public class Rectangle {
     /** The height of the rectangle in relation to the total size of the flag */
     private double ratioH = 0;
 
+    /** The color of the rectangle */
+    public Color color;
+
     /**
      * Basic rectangle constructor
      * @param ratioX see variable documentation
@@ -27,11 +30,12 @@ public class Rectangle {
      * @param ratioW see variable documentation
      * @param ratioH see variable documentation
      */
-    public Rectangle(double ratioX, double ratioY, double ratioW, double ratioH) {
+    public Rectangle(double ratioX, double ratioY, double ratioW, double ratioH, Color color) {
         this.ratioX = ratioX;
         this.ratioY = ratioY;
         this.ratioW = ratioW;
         this.ratioH = ratioH;
+        this.color = color;
     }
 
     /**

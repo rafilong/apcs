@@ -18,16 +18,20 @@ public class Star {
     /** The diameter of the star in relation to the total size of the flag */
     private double ratioD = 0;
 
+    /** The color of the rectangle */
+    public Color color;
+
     /**
      * Basic rectangle constructor
      * @param ratioX see variable documentation
      * @param ratioY see variable documentation
      * @param ratioD see variable documentation
      */
-    public Star(double ratioX, double ratioY, double ratioD) {
+    public Star(double ratioX, double ratioY, double ratioD, Color color) {
         this.ratioX = ratioX;
         this.ratioY = ratioY;
         this.ratioD = ratioD;
+        this.color = color;
     }
 
     /**

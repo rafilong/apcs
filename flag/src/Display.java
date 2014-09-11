@@ -38,9 +38,9 @@ public class Display extends JComponent {
         for (int i = 0; i < 13; i++) {
             // Alternates colors for each stripe
             if (i % 2 != 0) {
-                Flag.stripes[i].drawRectangle(g, new Color(0xffffff));
+                Flag.stripes[i].drawRectangle(g, Flag.stripes[i].color);
             } else {
-                Flag.stripes[i].drawRectangle(g, new Color(0xb22234));
+                Flag.stripes[i].drawRectangle(g, Flag.stripes[i].color);
             }
         }
 
@@ -48,12 +48,12 @@ public class Display extends JComponent {
         // Calls the union draw function
         // The union is divided into 7 parts in order to avoid rounding errors exposed by graphics
         for (int i = 0; i < 7; i++) {
-            Flag.unionBlue[i].drawRectangle(g, new Color(0x3c3b6e));
+            Flag.unionBlue[i].drawRectangle(g, Flag.unionBlue[i].color);
         }
 
         // Calls the star draw function
         for (int i = 0; i < 50; i++) {
-            Flag.stars[i].drawStar(g, new Color(0xffffff));
+            Flag.stars[i].drawStar(g, Flag.stars[i].color);
         }
     }
 }
