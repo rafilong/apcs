@@ -36,6 +36,7 @@
  * which instance to reference. MyScope.b works because b is a static variable, and remains constant through all
  * instances.
  */
+
 public class MyScope {
     int a = 2;
     static int b = 3;
@@ -56,6 +57,7 @@ public class MyScope {
         System.out.println(b);
     }
 }
+
 /*
  * Question 4:
  * Identify a way to generalize the way one can establish the scope of a variable. If you wish, you can invent a new
