@@ -62,8 +62,15 @@ public class MyScope {
  * Question 4:
  * Identify a way to generalize the way one can establish the scope of a variable. If you wish, you can invent a new
  * declaration mechanism. Justify and criticize your method.
- *
+ * 
+ * My declaration mechanism would allow users to declare variables that are global across all classes and methods. In
+ * order to use them you would have to use a global keyword in declaration, as you would static. In order to avoid
+ * conflicts with local variables, you would use the namespace global.* in order to differentiate them from variables
+ * that appear higher on the stack.
+ * 
  * Question 5:
  * Is it a good idea to be able to change the scope of a variable based on a conditional value that is not known
  * until runtime?
+ 
+ 
  */
