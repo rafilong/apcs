@@ -67,10 +67,23 @@ public class MyScope {
  * order to use them you would have to use a global keyword in declaration, as you would static. In order to avoid
  * conflicts with local variables, you would use the namespace global.* in order to differentiate them from variables
  * that appear higher on the stack.
+ *
+ * This declaration mechanism would be nice to use for variables that need to be accessed globally and don't fit under
+ * any specific class. However, a system like this isn't really needed, as variables can be accessed globally by
+ * using the public prefix and accessing it using the class namespace. Most variables are more related to one class than
+ * another, so using them as public class variables works a lot better than global variables. Global variables wouldn't
+ * be as good as public class variables as you would have to have longer variable names. This is because the class
+ * namespace already gives the user some basic information on what the variable is used for. A global variable that
+ * denoted a frame width would probably be called using global.frameWidth, while in the frame class it would be
+ * Frame.width.
  * 
  * Question 5:
  * Is it a good idea to be able to change the scope of a variable based on a conditional value that is not known
  * until runtime?
- 
- 
+ *
+ * This is not a good idea. The scope of a variable is completely necessary to know before running the program in order
+ * to avoid logic errors. By changing the scope only after it is compiled on a conditional value would make it very hard
+ * to keep track of the scope of the variables in a program. By having scope follow predestined rules, programmers who
+ * know their scopes confidently know that their program will access the right variables in the right place, and will
+ * run without scope-related logic errors.
  */
