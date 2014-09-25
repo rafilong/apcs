@@ -15,7 +15,7 @@ The stars, stripes, and the union all have their width, height, and x and y posi
 
 Drawing stars:
 
-Stars can be easily drawn by using trigonometry. Every star can be drawn with 10 points, which are the 5 outside, and the 5 inside points. If the center of the star is the origin, each of these points are 36 degrees apart. By using trig, you can find the x and y difference from the center, because you know the angle (36), and the radius, which is the diameter of the star divided by 2 (the diameter was given with all of the other measurements). The inner radius is .382 times the larger radius (this number was taken from John B. Hall, his website is mentioned in the comments in the drawStar method). By using cos for the x, and sin for the y, you can very easily determine the point's position in relation to the center of the star. The point itself is found by adding these differences to the coordinates of the center of the star.
+Stars can be drawn by using trigonometry. Every star can be drawn with 10 points, which are the 5 outside, and the 5 inside points. If the center of the star is the origin, each of these points are 36 degrees apart. By using trig, you can find the x and y difference from the center, because you know the angle (36), and the radius, which is the diameter of the star divided by 2 (the diameter was given with all of the other measurements). The inner radius is .382 times the larger radius (this number was taken from John B. Hall, his website is mentioned in the comments in the drawStar method). By using cos for the x, and sin for the y, you can very easily determine the point's position in relation to the center of the star. The point itself is found by adding these differences to the coordinates of the center of the star.
 
 ===
 
