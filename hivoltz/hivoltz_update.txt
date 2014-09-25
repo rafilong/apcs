@@ -1,0 +1,11 @@
+Hivoltz Project
+9/25/14 Update
+Coded by Rafi Long
+
+===
+
+Currently my Hivoltz project doesn't have much in the way of code, but I have practically all of my design planned out.
+
+At first I was having difficulties figuring out how to avoid using number to denominate different objects in the grid. For a while I was considering creating a new class for every type of object that could be in the grid, but I realized that wouldn't work because I would have to create an individual grid for each type of object. I then realized that I could use enums to differentiate between different objects, and on initialization create an array of the mhos, an array of fences, and a variable for the player. This create a new problem, because each mho, fence, and player is a space on the tile. It is not possible to move the tiles, so when each character moves I will have to reassign the variables in the arrays. However, this approach is much more specialized than having a number signifying each different type of object, and having arrays of the special objects is much faster than having to search through the whole grid for the objects.
+
+It might be worrying to you that I still don't have any visuals, but I would like to remind you that the same was true of my flag project, and that my flag project turned out very well.
