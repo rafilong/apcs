@@ -95,7 +95,7 @@ public class Grid {
      * Randomly spawns the 12 mhos in spaces that don't have a player or a fence
      */
     public void initMhos() {
-        // initializes random player
+        // initializes random mhos
         for (int i = 0; i < 12; i++) {
             // finds random x and y coordinates between 0 and 12
             int x = (int)(Math.random() * 12.0);
