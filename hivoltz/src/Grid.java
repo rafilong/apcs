@@ -1,5 +1,12 @@
+/*
+ * AP Computer Science Flag Project
+ * Code written by Rafi Long
+ * See code for documentation
+ */
+
 /**
- *  @author Rafi Long
+ * Initializes all the cells in the grid
+ * @author Rafi Long
  */
 public class Grid {
     /** A reference to the cell that contains the player */

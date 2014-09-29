@@ -1,4 +1,12 @@
+/*
+ * AP Computer Science Flag Project
+ * Code written by Rafi Long
+ * See code for documentation
+ */
+
 /**
+ * Contains all of the different types of cell
+ * Allows the type to be changed
  * @author Rafi Long
  */
 public class Cell {
