@@ -1,5 +1,5 @@
 /*
- * AP Computer Science Flag Project
+ * AP Computer Science Hivoltz Project
  * Code written by Rafi Long
  * See code for documentation
  */
