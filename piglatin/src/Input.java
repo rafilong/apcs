@@ -18,12 +18,11 @@ public class Input {
      */
     public static String getNewString() {
         Scanner sc = new Scanner(System.in);
-        String text = sc.nextLine();
-        return text;
+        return sc.nextLine();
     }
 
     /**
-     * Asks a question to the user and returns text asnwer
+     * Asks a question to the user and returns text answer
      * @param message the question
      * @return the answer
      */
@@ -54,5 +53,11 @@ public class Input {
         System.out.println("Please enter " + listAnswers);
         System.out.println();
         return multipleChoiceQuestion(message, possibleAnswers);
+    }
+
+    public static boolean trueFalse(String message) {
+        String answer = multipleChoiceQuestion(message, new String[] {"yes", "no"});
+
+        return answer.equals("true");
     }
 }
