@@ -84,7 +84,7 @@ public class Sentence {
         String tSentence = "";
 
         for (Word word : sentence) {
-            tSentence += word.output;
+            tSentence += word.output + " ";
         }
 
         return tSentence;
