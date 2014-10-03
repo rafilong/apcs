@@ -8,7 +8,7 @@
  *
  * @author Rafi Long
  */
-public class Main {
+public class Control {
     private static boolean repeat = true;
 
     public static void main(String args[]) {
