@@ -9,4 +9,8 @@
  * @author Rafi Long
  */
 public class AI {
+
+    public static void nextTurn() {
+        Main.frame.repaint();
+    }
 }

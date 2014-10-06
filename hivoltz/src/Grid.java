@@ -9,6 +9,10 @@
  * @author Rafi Long
  */
 public class Grid {
+    public static int gridWidth = 12;
+
+    public static int gridHeight = 12;
+
     /** A reference to the cell that contains the player */
     public Cell player;
     /** A reference to the cells with mhos */
@@ -105,7 +109,7 @@ public class Grid {
             if (grid[x][y].getType().equals(Cell.Type.NOTHING)) {
                 grid[x][y].setType(Cell.Type.MHO);
                 mhos[i] = grid[x][y];
-                // if there is, it doesn't set and adds the number of trials
+            // if there is, it doesn't set and adds the number of trials
             } else {
                 i--;
             }

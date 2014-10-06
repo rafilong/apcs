@@ -10,6 +10,12 @@
  * @author Rafi Long
  */
 public class Cell {
+
+    public static int cellWidth = 64;
+
+    public static int cellHeight = 64;
+
+
     /**
      * The different types of objects that can fill the cells
      */
@@ -32,7 +38,8 @@ public class Cell {
      */
     public Cell(Type type, int x, int y) {
         this.type = type;
-
+        this.x = x;
+        this.y = y;
     }
 
     /**
