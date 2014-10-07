@@ -31,26 +31,37 @@ public class Input implements KeyListener {
 
         int character = e.getKeyCode();
 
-        if (character == KeyEvent.VK_Q) {
-            moveUpLeft();
-        } else if (character == KeyEvent.VK_W) {
-            moveUp();
-        } else if (character == KeyEvent.VK_E) {
-            moveUpRight();
-        } else if (character == KeyEvent.VK_A) {
-            moveLeft();
-        } else if (character == KeyEvent.VK_S) {
-            stay();
-        } else if (character == KeyEvent.VK_D) {
-            moveRight();
-        } else if (character == KeyEvent.VK_Z) {
-            moveDownLeft();
-        } else if (character == KeyEvent.VK_X) {
-            moveDown();
-        } else if (character == KeyEvent.VK_C) {
-            moveDownRight();
-        } else if (character == KeyEvent.VK_J) {
-            jump();
+        switch (character) {
+            case KeyEvent.VK_Q:
+                move(-1, -1);
+                break;
+            case KeyEvent.VK_W:
+                move(0, -1);
+                break;
+            case KeyEvent.VK_E:
+                move(1, -1);
+                break;
+            case KeyEvent.VK_A:
+                move(-1, 0);
+                break;
+            case KeyEvent.VK_S:
+                stay();
+                break;
+            case KeyEvent.VK_D:
+                move(1, 0);
+                break;
+            case KeyEvent.VK_Z:
+                move(-1, 1);
+                break;
+            case KeyEvent.VK_X:
+                move(0, 1);
+                break;
+            case KeyEvent.VK_C:
+                move(1, 1);
+                break;
+            case KeyEvent.VK_J:
+                jump();
+                break;
         }
     }
 
@@ -65,6 +76,9 @@ public class Input implements KeyListener {
         System.out.println("Next turn");
     }
 
+    /**
+     * Makes the player move to a random square on the grid
+     */
     private static void jump() {
         int randomX = (int) (Math.random() * 12.0);
         int randomY = (int) (Math.random() * 12.0);
@@ -82,62 +96,16 @@ public class Input implements KeyListener {
     }
 
     /**
-     * Moves the player up and to the left
+     * Makes the player move in the specified way
+     * @param changeX moves the number of squares in the x (can be negative)
+     * @param changeY moves the number of squares in the y (can be negative)
      */
-    private static void moveUpLeft() {
-        if (board.grid[player.getX() - 1][player.getY() - 1].getType().equals(Cell.Type.NOTHING)) {
-            board.grid[player.getX() - 1][player.getY() - 1].setType(Cell.Type.PLAYER);
+    private static void move(int changeX, int changeY) {
+        if (board.grid[player.getX() + changeX][player.getY() + changeY].getType().equals(Cell.Type.NOTHING)) {
+            board.grid[player.getX() + changeX][player.getY() + changeY].setType(Cell.Type.PLAYER);
             board.grid[player.getX()][player.getY()].setType(Cell.Type.NOTHING);
 
-            Main.game.board.player = board.grid[player.getX() - 1][player.getY() - 1];
-
-            nextTurn();
-        } else {
-            Main.game.gameOver();
-        }
-    }
-
-    /**
-     * Moves the player up
-     */
-    private static void moveUp() {
-        if (board.grid[player.getX()][player.getY() - 1].getType().equals(Cell.Type.NOTHING)) {
-            board.grid[player.getX()][player.getY() - 1].setType(Cell.Type.PLAYER);
-            board.grid[player.getX()][player.getY()].setType(Cell.Type.NOTHING);
-
-            Main.game.board.player = board.grid[player.getX()][player.getY() - 1];
-
-            nextTurn();
-        } else {
-            Main.game.gameOver();
-        }
-    }
-
-    /**
-     * Moves the player up and to the right
-     */
-    private static void moveUpRight() {
-        if (board.grid[player.getX() + 1][player.getY() - 1].getType().equals(Cell.Type.NOTHING)) {
-            board.grid[player.getX() + 1][player.getY() - 1].setType(Cell.Type.PLAYER);
-            board.grid[player.getX()][player.getY()].setType(Cell.Type.NOTHING);
-
-            Main.game.board.player = board.grid[player.getX() + 1][player.getY() - 1];
-
-            nextTurn();
-        } else {
-            Main.game.gameOver();
-        }
-    }
-
-    /**
-     * Moves the player left
-     */
-    private static void moveLeft() {
-        if (board.grid[player.getX() - 1][player.getY()].getType().equals(Cell.Type.NOTHING)) {
-            board.grid[player.getX() - 1][player.getY()].setType(Cell.Type.PLAYER);
-            board.grid[player.getX()][player.getY()].setType(Cell.Type.NOTHING);
-
-            Main.game.board.player = board.grid[player.getX() - 1][player.getY()];
+            Main.game.board.player = board.grid[player.getX() + changeX][player.getY() + changeY];
 
             nextTurn();
         } else {
@@ -150,69 +118,5 @@ public class Input implements KeyListener {
      */
     private static void stay() {
         nextTurn();
-    }
-
-    /**
-     * Moves the player right
-     */
-    private static void moveRight() {
-        if (board.grid[player.getX() + 1][player.getY()].getType().equals(Cell.Type.NOTHING)) {
-            board.grid[player.getX() + 1][player.getY()].setType(Cell.Type.PLAYER);
-            board.grid[player.getX()][player.getY()].setType(Cell.Type.NOTHING);
-
-            Main.game.board.player = board.grid[player.getX() + 1][player.getY()];
-
-            nextTurn();
-        } else {
-            Main.game.gameOver();
-        }
-    }
-
-    /**
-     * Moves the player down and to the left
-     */
-    private static void moveDownLeft() {
-        if (board.grid[player.getX() - 1][player.getY() + 1].getType().equals(Cell.Type.NOTHING)) {
-            board.grid[player.getX() - 1][player.getY() + 1].setType(Cell.Type.PLAYER);
-            board.grid[player.getX()][player.getY()].setType(Cell.Type.NOTHING);
-
-            Main.game.board.player = board.grid[player.getX() - 1][player.getY() + 1];
-
-            nextTurn();
-        } else {
-            Main.game.gameOver();
-        }
-    }
-
-    /**
-     * Moves the player down
-     */
-    private static void moveDown() {
-        if (board.grid[player.getX()][player.getY() + 1].getType().equals(Cell.Type.NOTHING)) {
-            board.grid[player.getX()][player.getY() + 1].setType(Cell.Type.PLAYER);
-            board.grid[player.getX()][player.getY()].setType(Cell.Type.NOTHING);
-
-            Main.game.board.player = board.grid[player.getX()][player.getY() + 1];
-
-            nextTurn();
-        } else {
-            Main.game.gameOver();
-        }
-    }
-
-    /**
-     * Moves the player down and to the right
-     */
-    private static void moveDownRight() {
-        if (board.grid[player.getX() + 1][player.getY() + 1].getType().equals(Cell.Type.NOTHING)) {
-            board.grid[player.getX() + 1][player.getY() + 1].setType(Cell.Type.PLAYER);
-            board.grid[player.getX()][player.getY()].setType(Cell.Type.NOTHING);
-
-            Main.game.board.player = board.grid[player.getX() + 1][player.getY() + 1];
-
-            nextTurn();
-        } else {
-            Main.game.gameOver();
-        }
     }
 }
