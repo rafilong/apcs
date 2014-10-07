@@ -4,6 +4,8 @@
  * See code for documentation
  */
 
+import java.util.ArrayList;
+
 /**
  * Initializes all the cells in the grid
  * @author Rafi Long
@@ -16,7 +18,7 @@ public class Grid {
     /** A reference to the cell that contains the player */
     public Cell player;
     /** A reference to the cells with mhos */
-    public Cell[] mhos = new Cell[12];
+    public ArrayList<Cell> mhos = new ArrayList<Cell>();
     /** All of the objects in the grid */
     public Cell[][] grid = new Cell[12][12];
 
@@ -108,10 +110,25 @@ public class Grid {
             // checks if there is something in the cell
             if (grid[x][y].getType().equals(Cell.Type.NOTHING)) {
                 grid[x][y].setType(Cell.Type.MHO);
-                mhos[i] = grid[x][y];
+                mhos.add(grid[x][y]);
             // if there is, it doesn't set and adds the number of trials
             } else {
                 i--;
+            }
+        }
+    }
+
+    /**
+     * Finds the mhos and sets them to be in the array
+     */
+    public void findMhos() {
+        // clears the list of mhos
+        mhos.clear();
+
+        // if there is a mho in the cell, the cell is added to mhos
+        for (int r = 0; r < grid.length; r++) {
+            for (int c = 0; c < grid.length; c++) {
+                mhos.add(grid[r][c]);
             }
         }
     }

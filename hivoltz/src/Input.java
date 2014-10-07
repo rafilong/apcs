@@ -17,6 +17,9 @@ public class Input implements KeyListener {
     /** A reference to the Main.game.board.player object */
     private static Cell player;
 
+    /**
+     * Constructor adds keylistener to frame
+     */
     public Input() {
         Main.frame.addKeyListener(this);
     }
@@ -83,7 +86,7 @@ public class Input implements KeyListener {
         int randomX = (int) (Math.random() * 12.0);
         int randomY = (int) (Math.random() * 12.0);
 
-        if (board.grid[randomX][randomY].getType().equals(Cell.Type.NOTHING)) {
+        if (!board.grid[randomX][randomY].getType().equals(Cell.Type.FENCE)) {
             board.grid[randomX][randomY].setType(Cell.Type.PLAYER);
             board.grid[player.getX()][player.getY()].setType(Cell.Type.NOTHING);
 
