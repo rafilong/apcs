@@ -75,8 +75,8 @@ public class Input implements KeyListener {
      * Calls the next turn methods
      */
     private static void nextTurn() {
+
         AI.nextTurn();
-        System.out.println("Next turn");
     }
 
     /**

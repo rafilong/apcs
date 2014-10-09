@@ -128,7 +128,9 @@ public class Grid {
         // if there is a mho in the cell, the cell is added to mhos
         for (int r = 0; r < grid.length; r++) {
             for (int c = 0; c < grid.length; c++) {
-                mhos.add(grid[r][c]);
+                if (grid[r][c].getType() == Cell.Type.MHO) {
+                    mhos.add(grid[r][c]);
+                }
             }
         }
     }
