@@ -103,12 +103,12 @@ public class Input implements KeyListener {
         int randomX = (int) (Math.random() * 12.0);
         int randomY = (int) (Math.random() * 12.0);
 
-        if (board.grid[randomX][randomY].getType().equals(Cell.Type.MHO)) {
+        if (board.grid[randomX][randomY].getType().equals(Cell.Type.FENCE)) {
             jump();
             return;
         }
 
-        if (!board.grid[randomX][randomY].getType().equals(Cell.Type.FENCE)) {
+        if (!board.grid[randomX][randomY].getType().equals(Cell.Type.MHO)) {
             board.grid[randomX][randomY].setType(Cell.Type.PLAYER);
             board.grid[player.getX()][player.getY()].setType(Cell.Type.NOTHING);
 
