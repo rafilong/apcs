@@ -21,7 +21,7 @@ public class Input implements KeyListener {
      * Constructor adds keylistener to frame
      */
     public Input() {
-        Main.frame.addKeyListener(this);
+        Main.game.frame.addKeyListener(this);
     }
 
     @Override
@@ -75,8 +75,25 @@ public class Input implements KeyListener {
      * Calls the next turn methods
      */
     private static void nextTurn() {
+        if (checkDead()) {
+            Main.game.gameOver();
+        } else {
+            AI.nextTurn();
+        }
+    }
 
-        AI.nextTurn();
+    /**
+     * Checks if the player will die next turn and then ends the game
+     */
+    private static boolean checkDead() {
+        for (int r = -1; r < 1; r++) {
+            for (int c = -1; c < 1; c++) {
+                if (board.grid[player.getX() + r][player.getY() + c].getType() == Cell.Type.MHO) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**
@@ -86,13 +103,16 @@ public class Input implements KeyListener {
         int randomX = (int) (Math.random() * 12.0);
         int randomY = (int) (Math.random() * 12.0);
 
+        if (board.grid[randomX][randomY].getType().equals(Cell.Type.MHO)) {
+            jump();
+            return;
+        }
+
         if (!board.grid[randomX][randomY].getType().equals(Cell.Type.FENCE)) {
             board.grid[randomX][randomY].setType(Cell.Type.PLAYER);
             board.grid[player.getX()][player.getY()].setType(Cell.Type.NOTHING);
 
             Main.game.board.player = board.grid[randomX][randomY];
-
-            nextTurn();
         } else {
             Main.game.gameOver();
         }

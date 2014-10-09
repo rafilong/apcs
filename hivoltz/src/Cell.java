@@ -20,7 +20,7 @@ public class Cell {
      * The different types of objects that can fill the cells
      */
     public enum Type {
-        NOTHING, MHO, FENCE, PLAYER;
+        NOTHING, MHO, FENCE, PLAYER
     }
 
     /** The type of the cell (can change) */

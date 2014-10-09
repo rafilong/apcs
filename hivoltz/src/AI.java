@@ -30,7 +30,7 @@ public class AI {
 
         findMoves();
 
-        Main.frame.repaint();
+        Main.game.frame.repaint();
         Main.game.board.findMhos();
     }
 
