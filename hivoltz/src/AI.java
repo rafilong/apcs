@@ -68,7 +68,7 @@ public class AI {
             moveDirection(mho, false, true);
             return;
         } else if (player.getY() - mho.getY() == 0) {
-            moveDirection(mho, false, true);
+            moveDirection(mho, true, false);
             return;
         }
 
@@ -90,13 +90,13 @@ public class AI {
             return;
         }
 
-        // if diagonal move will have to move on a fence or mho, then it returns false and tries to move vertically
+        // if diagonal move will have to move on a fence or mho, then it returns false and tries to move the other way
         if (!moveDirection(mho, false, false,  Cell.Type.MHO)) {
-            // if the player is further or equal horizontally, then it tries to move horizontally
             if (player.getX() - mho.getX() >= player.getY() - mho.getY()) {
+                // if the player is further or equal horizontally, then it tries to move horizontally
                 moveDirection(mho, false, true, Cell.Type.MHO);
-                // if the player is further vertically, then it tries to move vertically
             } else {
+                // if the player is further vertically, then it tries to move vertically
                 moveDirection(mho, true, false, Cell.Type.MHO);
             }
         }
