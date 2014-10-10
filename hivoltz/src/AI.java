@@ -21,14 +21,19 @@ public class AI {
      * (Ben helped with the conversion of the ArrayList to the array)
      */
     public static void nextTurn() {
+        // sets board and player to reference Main.game.board variables
         board = Main.game.board;
         player = Main.game.board.player;
 
+        // sets mhos to reference Main.game.board.mhos, but converts it to an array from an ArrayList
         setMhos();
 
+        // finds all the moves for the mhos
         findMoves();
 
+        // repaints the board
         Main.frame.repaint();
+        // resets mhos in Main.game.board
         Main.game.board.findMhos();
     }
 
@@ -36,13 +41,10 @@ public class AI {
      * Adds the objects in the Grid.mhos to the AI.mhos
      */
     private static void setMhos() {
+        // a new Object array for mhos
         Object[] cand =  Main.game.board.mhos.toArray();
 
-        if (cand.length == 0) {
-            Main.game.playerWin();
-            return;
-        }
-
+        // creates a new Cell array and casts the Object array to the Cell array
         Cell[] mhosArray = new Cell[cand.length];
         for(int i = 0; i < cand.length; i++) {
             mhosArray[i] = (Cell)(cand[i]);
@@ -147,17 +149,19 @@ public class AI {
      * @param changeY the change in Y
      */
     private static void move(Cell mho, int changeX, int changeY) {
-        //checks square it is moving to
+        //checks the square the mho is moving to
         if (board.grid[mho.getX() + changeX][ mho.getY() + changeY].getType() == Cell.Type.NOTHING) {
-            //mho moves
+            // if the tile the mho is moving to is empty, then it moves
             board.grid[mho.getX() + changeX][mho.getY() + changeY].setType(Cell.Type.MHO);
         } else if (board.grid[mho.getX() + changeX][ mho.getY() + changeY].getType() == Cell.Type.FENCE) {
-            // mho dies
+            // if the tile the mho is moving to has a fence, then it dies
         } else if (board.grid[mho.getX() + changeX][ mho.getY() + changeY].getType() == Cell.Type.PLAYER) {
-            // player dies, mho doesn't move
+            // if the tile the mho is moving to has a player, then the player dies and the mho doesn't
             Main.game.playerLoss();
             return;
         }
+
+        //sets the mhos original place in the board to be equal to nothing
         board.grid[mho.getX()][mho.getY()].setType(Cell.Type.NOTHING);
     }
 }

@@ -120,6 +120,9 @@ public class Grid {
 
     /**
      * Finds the mhos and sets them to be in the array
+     * Also checks to see if the player has won
+     *
+     * Fix: Have the list of mhos updated in AI so this function isn't needed
      */
     public void findMhos() {
         // clears the list of mhos
@@ -132,6 +135,11 @@ public class Grid {
                     mhos.add(grid[r][c]);
                 }
             }
+        }
+
+        // checks to see if the player
+        if (mhos.size() == 0) {
+            Main.game.playerWin();
         }
     }
 }
