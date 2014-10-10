@@ -4,8 +4,12 @@
  * See code for documentation
  */
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Displays the board
@@ -17,32 +21,46 @@ import java.awt.*;
  * http://developer.android.com/design/style/color.html
  */
 public class Display extends JComponent {
+    /** The image displayed on a win */
+    BufferedImage win;
+    /** The image displayed on a loss */
+    BufferedImage lose;
 
     /**
      * Empty constructor
      */
     public Display() {
         setSize(Game.gameWidth, Game.gameHeight);
+
+        try {
+            win = ImageIO.read(new File("win.png"));
+            lose = ImageIO.read(new File("lose.png"));
+        } catch (IOException e) {
+            System.err.println("Failed to load images. Game will print out 'Game over' when lost, 'You win' when won");
+        }
     }
 
     /**
      * Calls the other paint methods
-     * @param g
+     * @param g graphics variable
      */
     public void paint(Graphics g) {
         // draws the grid and the tiles
         drawGrid(g);
         drawTiles(g);
 
-        // checks to see if there is a mho that killed the player
-        if (AI.mhoKiller != null) {
-            drawMhoKiller(g, AI.mhoKiller.getX(), AI.mhoKiller.getY());
+        if (!Main.game.gameStatus) {
+            if (Main.game.playerWin) {
+                g.drawImage(win, 0, 0, this);
+            } else {
+                g.drawImage(lose, 0, 0, this);
+            }
         }
     }
 
     /**
      * Draws the empty tiles and fences
-     * @param g
+     * @param g graphics variable
      */
     private void drawTiles(Graphics g) {
         Grid board = Main.game.board;
@@ -62,7 +80,7 @@ public class Display extends JComponent {
 
     /**
      * Draws the grid with tile colors
-     * @param g
+     * @param g graphics variable
      */
     private void drawGrid(Graphics g) {
         g.setColor(new Color(0x313131));

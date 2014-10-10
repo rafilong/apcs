@@ -9,12 +9,17 @@ import java.awt.event.KeyListener;
 
 /**
  * Gets player input and moves the player
+ *
  * @author Rafi Long
  */
 public class Input implements KeyListener {
-    /** A reference to the Main.game.board object */
+    /**
+     * A reference to the Main.game.board object
+     */
     private static Grid board;
-    /** A reference to the Main.game.board.player object */
+    /**
+     * A reference to the Main.game.board.player object
+     */
     private static Cell player;
 
     /**
@@ -25,17 +30,18 @@ public class Input implements KeyListener {
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {}
+    public void keyTyped(KeyEvent e) {
+    }
 
     @Override
     public void keyPressed(KeyEvent e) {
         // you can only move if gameStatus is true
+        board = Main.game.board;
+        player = Main.game.board.player;
+
+        int character = e.getKeyCode();
+
         if (Main.game.gameStatus) {
-            board = Main.game.board;
-            player = Main.game.board.player;
-
-            int character = e.getKeyCode();
-
             // Ben and Tyler helped with switch cases
             switch (character) {
                 case KeyEvent.VK_Q:
@@ -70,16 +76,29 @@ public class Input implements KeyListener {
                     break;
             }
         }
+
+        if (character == KeyEvent.VK_R) {
+            reset();
+        }
     }
 
     @Override
-    public void keyReleased(KeyEvent e) {}
+    public void keyReleased(KeyEvent e) {
+    }
 
     /**
      * Calls the next turn methods
      */
     private static void nextTurn() {
+        Main.frame.repaint();
         AI.nextTurn();
+    }
+
+    /**
+     * Calls the Main reset function
+     */
+    private static void reset() {
+        Main.reset();
     }
 
     /**
@@ -90,26 +109,24 @@ public class Input implements KeyListener {
         int randomY = (int) (Math.random() * 12.0);
 
         if (board.grid[randomX][randomY].getType().equals(Cell.Type.FENCE)) {
-            System.out.println("land on fence");
             jump();
             return;
         }
 
         if (board.grid[randomX][randomY].getType().equals(Cell.Type.NOTHING)) {
-            System.out.println("success");
             board.grid[randomX][randomY].setType(Cell.Type.PLAYER);
             board.grid[player.getX()][player.getY()].setType(Cell.Type.NOTHING);
 
             Main.game.board.player = board.grid[randomX][randomY];
             Main.frame.repaint();
         } else {
-            System.out.println("died on mho");
-            Main.game.gameOver();
+            Main.game.playerLoss();
         }
     }
 
     /**
      * Makes the player move in the specified way
+     *
      * @param changeX moves the number of squares in the x (can be negative)
      * @param changeY moves the number of squares in the y (can be negative)
      */
@@ -122,7 +139,7 @@ public class Input implements KeyListener {
 
             nextTurn();
         } else {
-            Main.game.gameOver();
+            Main.game.playerLoss();
         }
     }
 

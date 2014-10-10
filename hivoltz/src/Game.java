@@ -19,6 +19,8 @@ public class Game {
 
     /** Whether the game is running or not */
     public boolean gameStatus = true;
+    /** If the player won or not */
+    public boolean playerWin = false;
 
     /**
      * Empty constructor
@@ -28,11 +30,25 @@ public class Game {
     }
 
     /**
-     * The game ends
+     * The player loses the game
      */
-    public void gameOver() {
+    public void playerLoss() {
         System.out.println("Game over");
         Main.frame.repaint();
+
         gameStatus = false;
+        Main.frame.repaint();
+    }
+
+    /**
+     * The player beats the game
+     */
+    public void playerWin() {
+        System.out.println("You win!");
+        Main.frame.repaint();
+
+        gameStatus = false;
+        playerWin = true;
+        Main.frame.repaint();
     }
 }

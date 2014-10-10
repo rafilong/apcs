@@ -4,8 +4,6 @@
  * See code for documentation
  */
 
-import java.util.ArrayList;
-
 /**
  * Controls when the mhos move
  * @author Rafi Long
@@ -17,8 +15,6 @@ public class AI {
     private static Cell player;
     /** A reference to the Main.game.mhos object */
     private static Cell[] mhos;
-    /** A reference to the mho that killed the player */
-    public static Cell mhoKiller;
 
     /**
      * Sets the local variables of the cells to be equal to the original values
@@ -41,6 +37,12 @@ public class AI {
      */
     private static void setMhos() {
         Object[] cand =  Main.game.board.mhos.toArray();
+
+        if (cand.length == 0) {
+            Main.game.playerWin();
+            return;
+        }
+
         Cell[] mhosArray = new Cell[cand.length];
         for(int i = 0; i < cand.length; i++) {
             mhosArray[i] = (Cell)(cand[i]);
@@ -153,8 +155,7 @@ public class AI {
             // mho dies
         } else if (board.grid[mho.getX() + changeX][ mho.getY() + changeY].getType() == Cell.Type.PLAYER) {
             // player dies, mho doesn't move
-            mhoKiller = board.grid[mho.getX()][mho.getY()];
-            Main.game.gameOver();
+            Main.game.playerLoss();
             return;
         }
         board.grid[mho.getX()][mho.getY()].setType(Cell.Type.NOTHING);
