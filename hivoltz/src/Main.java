@@ -37,7 +37,6 @@ public class Main {
      * Creates a new game object that replaces the old one
      */
     public static void reset() {
-        AI.mhoKiller = null;
         game = new Game();
         frame.repaint();
     }
