@@ -65,10 +65,10 @@ public class AI {
     private static void findMove(Cell mho) {
         // if the mho and the player are in a line, the mho moves towards the player
         if (player.getX() - mho.getX() == 0) {
-            moveDirection(mho, false, true);
+            moveDirection(mho, false, true, Cell.Type.MHO);
             return;
         } else if (player.getY() - mho.getY() == 0) {
-            moveDirection(mho, true, false);
+            moveDirection(mho, true, false, Cell.Type.MHO);
             return;
         }
 
