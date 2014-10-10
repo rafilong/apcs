@@ -30,8 +30,14 @@ public class Display extends JComponent {
      * @param g
      */
     public void paint(Graphics g) {
+        // draws the grid and the tiles
         drawGrid(g);
         drawTiles(g);
+
+        // checks to see if there is a mho that killed the player
+        if (AI.mhoKiller != null) {
+            drawMhoKiller(g, AI.mhoKiller.getX(), AI.mhoKiller.getY());
+        }
     }
 
     /**
@@ -100,6 +106,17 @@ public class Display extends JComponent {
      */
     private void drawMho(Graphics g, int row, int col) {
         g.setColor(new Color(0x99CC00));
+        drawCircleInGrid(g, row, col);
+    }
+
+    /**
+     * Draws the mho that killed the player in red
+     * @param g graphics variable
+     * @param row the row the object is in
+     * @param col the column the object is in
+     */
+    public void drawMhoKiller(Graphics g, int row, int col) {
+        g.setColor(new Color(0xFF4444));
         drawCircleInGrid(g, row, col);
     }
 

@@ -17,6 +17,8 @@ public class AI {
     private static Cell player;
     /** A reference to the Main.game.mhos object */
     private static Cell[] mhos;
+    /** A reference to the mho that killed the player */
+    public static Cell mhoKiller;
 
     /**
      * Sets the local variables of the cells to be equal to the original values
@@ -30,7 +32,7 @@ public class AI {
 
         findMoves();
 
-        Main.game.frame.repaint();
+        Main.frame.repaint();
         Main.game.board.findMhos();
     }
 
@@ -143,7 +145,18 @@ public class AI {
      * @param changeY the change in Y
      */
     private static void move(Cell mho, int changeX, int changeY) {
-        board.grid[mho.getX() + changeX][mho.getY() + changeY].setType(Cell.Type.MHO);
+        //checks square it is moving to
+        if (board.grid[mho.getX() + changeX][ mho.getY() + changeY].getType() == Cell.Type.NOTHING) {
+            //mho moves
+            board.grid[mho.getX() + changeX][mho.getY() + changeY].setType(Cell.Type.MHO);
+        } else if (board.grid[mho.getX() + changeX][ mho.getY() + changeY].getType() == Cell.Type.FENCE) {
+            // mho dies
+        } else if (board.grid[mho.getX() + changeX][ mho.getY() + changeY].getType() == Cell.Type.PLAYER) {
+            // player dies, mho doesn't move
+            mhoKiller = board.grid[mho.getX()][mho.getY()];
+            Main.game.gameOver();
+            return;
+        }
         board.grid[mho.getX()][mho.getY()].setType(Cell.Type.NOTHING);
     }
 }

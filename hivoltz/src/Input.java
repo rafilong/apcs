@@ -21,7 +21,7 @@ public class Input implements KeyListener {
      * Constructor adds keylistener to frame
      */
     public Input() {
-        Main.game.frame.addKeyListener(this);
+        Main.frame.addKeyListener(this);
     }
 
     @Override
@@ -29,42 +29,46 @@ public class Input implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        board = Main.game.board;
-        player = Main.game.board.player;
+        // you can only move if gameStatus is true
+        if (Main.game.gameStatus) {
+            board = Main.game.board;
+            player = Main.game.board.player;
 
-        int character = e.getKeyCode();
+            int character = e.getKeyCode();
 
-        switch (character) {
-            case KeyEvent.VK_Q:
-                move(-1, -1);
-                break;
-            case KeyEvent.VK_W:
-                move(0, -1);
-                break;
-            case KeyEvent.VK_E:
-                move(1, -1);
-                break;
-            case KeyEvent.VK_A:
-                move(-1, 0);
-                break;
-            case KeyEvent.VK_S:
-                stay();
-                break;
-            case KeyEvent.VK_D:
-                move(1, 0);
-                break;
-            case KeyEvent.VK_Z:
-                move(-1, 1);
-                break;
-            case KeyEvent.VK_X:
-                move(0, 1);
-                break;
-            case KeyEvent.VK_C:
-                move(1, 1);
-                break;
-            case KeyEvent.VK_J:
-                jump();
-                break;
+            // Ben and Tyler helped with switch cases
+            switch (character) {
+                case KeyEvent.VK_Q:
+                    move(-1, -1);
+                    break;
+                case KeyEvent.VK_W:
+                    move(0, -1);
+                    break;
+                case KeyEvent.VK_E:
+                    move(1, -1);
+                    break;
+                case KeyEvent.VK_A:
+                    move(-1, 0);
+                    break;
+                case KeyEvent.VK_S:
+                    stay();
+                    break;
+                case KeyEvent.VK_D:
+                    move(1, 0);
+                    break;
+                case KeyEvent.VK_Z:
+                    move(-1, 1);
+                    break;
+                case KeyEvent.VK_X:
+                    move(0, 1);
+                    break;
+                case KeyEvent.VK_C:
+                    move(1, 1);
+                    break;
+                case KeyEvent.VK_J:
+                    jump();
+                    break;
+            }
         }
     }
 
@@ -75,25 +79,7 @@ public class Input implements KeyListener {
      * Calls the next turn methods
      */
     private static void nextTurn() {
-        if (checkDead()) {
-            Main.game.gameOver();
-        } else {
-            AI.nextTurn();
-        }
-    }
-
-    /**
-     * Checks if the player will die next turn and then ends the game
-     */
-    private static boolean checkDead() {
-        for (int r = -1; r < 1; r++) {
-            for (int c = -1; c < 1; c++) {
-                if (board.grid[player.getX() + r][player.getY() + c].getType() == Cell.Type.MHO) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        AI.nextTurn();
     }
 
     /**
@@ -104,16 +90,20 @@ public class Input implements KeyListener {
         int randomY = (int) (Math.random() * 12.0);
 
         if (board.grid[randomX][randomY].getType().equals(Cell.Type.FENCE)) {
+            System.out.println("land on fence");
             jump();
             return;
         }
 
-        if (!board.grid[randomX][randomY].getType().equals(Cell.Type.MHO)) {
+        if (board.grid[randomX][randomY].getType().equals(Cell.Type.NOTHING)) {
+            System.out.println("success");
             board.grid[randomX][randomY].setType(Cell.Type.PLAYER);
             board.grid[player.getX()][player.getY()].setType(Cell.Type.NOTHING);
 
             Main.game.board.player = board.grid[randomX][randomY];
+            Main.frame.repaint();
         } else {
+            System.out.println("died on mho");
             Main.game.gameOver();
         }
     }
