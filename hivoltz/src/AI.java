@@ -65,23 +65,23 @@ public class AI {
     private static void findMove(Cell mho) {
         // if the mho and the player are in a line, the mho moves towards the player
         if (player.getX() - mho.getX() == 0) {
-            moveDirection(mho, false, true, Cell.Type.MHO);
+            verticalMove(mho);
             return;
         } else if (player.getY() - mho.getY() == 0) {
-            moveDirection(mho, true, false, Cell.Type.MHO);
+            horizontalMove(mho);
             return;
         }
 
         // if diagonal move will have to move on a fence or mho, then it returns false and tries to move vertically
-        if (!moveDirection(mho, false, false, Cell.Type.FENCE, Cell.Type.MHO)) {
+        if (!diagonalMove(mho, Cell.Type.FENCE, Cell.Type.MHO)) {
             // if the player is further or equal horizontally, then it tries to move horizontally
             if (player.getX() - mho.getX() >= player.getY() - mho.getY()) {
-                if (moveDirection(mho, false, true, Cell.Type.FENCE, Cell.Type.MHO)) {
+                if (horizontalMove(mho, Cell.Type.FENCE, Cell.Type.MHO)) {
                     return;
                 }
             // if the player is further vertically, then it tries to move vertically
             } else {
-                if (moveDirection(mho, true, false, Cell.Type.FENCE, Cell.Type.MHO)) {
+                if (verticalMove(mho, Cell.Type.FENCE, Cell.Type.MHO)) {
                     return;
                 }
             }
@@ -91,44 +91,113 @@ public class AI {
         }
 
         // if diagonal move will have to move on a fence or mho, then it returns false and tries to move the other way
-        if (!moveDirection(mho, false, false,  Cell.Type.MHO)) {
+        if (!diagonalMove(mho, Cell.Type.MHO)) {
             if (player.getX() - mho.getX() >= player.getY() - mho.getY()) {
                 // if the player is further or equal horizontally, then it tries to move horizontally
-                moveDirection(mho, false, true, Cell.Type.MHO);
+                horizontalMove(mho, Cell.Type.MHO);
             } else {
                 // if the player is further vertically, then it tries to move vertically
-                moveDirection(mho, true, false, Cell.Type.MHO);
+                verticalMove(mho, Cell.Type.MHO);
             }
         }
         // if diagonal move did work, then it will just move diagonal
     }
 
-    private static boolean moveDirection(Cell mho, boolean lockX, boolean lockY, Cell.Type ... types) {
+    /**
+     * Moves the mho towards the player horizontally
+     * If there is an object it should be avoiding and it has to move onto it, it returns false and doesn't move
+     *
+     * @param mho the mho to be moved
+     * @param types the types of cells it should avoid moving onto
+     * @return whether it successfully moved or not
+     */
+    private static boolean horizontalMove(Cell mho, Cell.Type ... types) {
+        // change in x direction to move towards the player
+        int changeX;
+
+        if (player.getX() < mho.getX()) {
+            // if the player is on the left
+            changeX = -1;
+        } else {
+            // if the player is on the right
+            changeX = 1;
+        }
+
+        // if one of the types is in the way, it returns false
+        for (Cell.Type type : types) {
+            if (board.grid[mho.getX() + changeX][mho.getY()].getType().equals(type)) {
+                return false;
+            }
+        }
+
+        // moves the mho towards the player and returns true
+        move(mho, changeX, 0);
+
+        return true;
+    }
+
+    /**
+     * Moves the mho towards the player vertically
+     * If there is an object it should be avoiding and it has to move onto it, it returns false and doesn't move
+     *
+     * @param mho the mho to be moved
+     * @param types the types of cells it should avoid moving onto
+     * @return whether it successfully moved or not
+     */
+    private static boolean verticalMove(Cell mho, Cell.Type ... types) {
+        // change in x direction to move towards the player
+        int changeY;
+
+        if (player.getY() < mho.getY()) {
+            // if the player is on the above
+            changeY = -1;
+        } else {
+            // if the player is on the right
+            changeY = 1;
+        }
+
+        // if one of the types is in the way, it returns false
+        for (Cell.Type type : types) {
+            if (board.grid[mho.getX()][mho.getY() + changeY].getType().equals(type)) {
+                return false;
+            }
+        }
+
+        // moves the mho towards the player and returns true
+        move(mho, 0, changeY);
+
+        return true;
+    }
+
+    /**
+     * Moves the mho towards the player diagonally
+     * If there is an object it should be avoiding and it has to move onto it, it returns false and doesn't move
+     *
+     * @param mho the mho to be moved
+     * @param types the types of cells it should avoid moving onto
+     * @return whether it successfully moved or not
+     */
+    private static boolean diagonalMove(Cell mho, Cell.Type... types) {
         // change in x direction to move towards the player
         int changeX;
         // change in y direction to move towards the player
         int changeY;
 
-        // if the player is on the left
         if (player.getX() < mho.getX()) {
+            // if the player is on the left
             changeX = -1;
-        // if the player is on the right
         } else {
+            // if the player is on the right
             changeX = 1;
         }
 
-        // if the player is above
         if (player.getY() < mho.getY()) {
+            // if the player is above
             changeY = -1;
-        // if the player below
         } else {
+            // if the player below
             changeY = 1;
         }
-
-        // if the invocation locks the x, then it sets x to equal 0
-        if (lockX) changeX = 0;
-        // if the invocation locks the y, then it sets y to equal 0
-        if (lockY) changeY = 0;
 
         // if one of the types is in the way, it returns false
         for (Cell.Type type : types) {
