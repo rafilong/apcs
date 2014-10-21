@@ -8,6 +8,7 @@
  * - created object method version of abs (see abs documentation for changes)
  */
 public class Question2 extends Complex {
+
     /**
      * Original version
      */
