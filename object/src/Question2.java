@@ -2,6 +2,12 @@
  * Answers to question 2 in ThinkAPJava chapter 15
  * http://www.greenteapress.com/thinkapjava/thinkapjava.pdf
  *
+ * Question:
+ * Transform the following class method into an object method.
+     public static double abs(Complex c) {
+         return Math.sqrt(c.real * c.real + c.imag * c.imag);
+     }
+ *
  * @author Rafi Long
  *
  * Edits by Rafi:

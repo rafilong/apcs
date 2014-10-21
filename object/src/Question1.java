@@ -2,6 +2,10 @@
  * Answers to question 1 in ThinkAPJava chapter 15
  * http://www.greenteapress.com/thinkapjava/thinkapjava.pdf
  *
+ * Question:
+ * Transform merge into an object method, and change mergeSort accordingly.
+ * Which version of merge do you prefer?
+ *
  * @author Rafi Long
  *
  * Edits by Rafi:

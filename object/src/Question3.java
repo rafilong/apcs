@@ -4,6 +4,9 @@
  *
  * Question:
  * Transform the following object method into a class method.
+     public boolean equals(Complex b) {
+         return(real == b.real && imag == b.imag);
+     }
  *
  * @author Rafi Long
  *
