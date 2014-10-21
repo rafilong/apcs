@@ -5,8 +5,9 @@
  * GNU General Public License v3.0 (http://www.gnu.org/copyleft/gpl.html)
  *
  * @author Allen B. Downey
+ *
+ * Edited by Rafi Long to introduce compatibility with CardSoln3
  */
-
 public class CardSoln3 {
     /*
      * Test code.
