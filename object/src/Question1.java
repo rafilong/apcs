@@ -10,6 +10,7 @@
  *
  * Edits by Rafi:
  * - see merge javadocs
+ * - see mergeSort javadocs
  */
 public class Question1 extends Deck {
 
@@ -53,4 +54,37 @@ public class Question1 extends Deck {
         return result;
     }
 
+   /*
+    * Sort the Deck using merge sort.
+    *
+    * Edits by Rafi:
+    * 1) replaced the invocation of the static merge with the object merge in Question1
+    *
+    * Bugs:
+    * The program tries to invoke Deck's merge, not the Question1 merge. This is because d1 is of type Deck,
+    * not Question1, so calling d1.merge invokes Deck.merge. This could be fixed by changing the type of d1 to Deck,
+    * but this introduces a new problem that subdeck() and mergesort() return type Deck. I fixed this by adding a
+    * cast to both instances. This will make the program work, but it is a cheap workaround. A good way of fixing
+    * this might be to change the return type on the conflicting classes, or to just copy-paste all of CardSoln3 into
+    * Question1 and change the functions specified. However, This leaves the user unsure of what methods have been
+    * edited, so instead I used this fix, even with the problems it has.
+    */
+    public Deck mergeSort() {
+        if (cards.length < 2) {
+            return this;
+        }
+        int mid = (cards.length-1) / 2;
+
+        // divide the deck roughly in half
+        Question1 d1 = (Question1) subdeck(0, mid);
+        Deck d2 = subdeck(mid+1, cards.length-1);
+
+        // sort the halves
+        d1 = (Question1) d1.mergeSort();
+        d2 = d2.mergeSort();
+
+        // merge the two halves and return the result
+        // (d1 and d2 get garbage collected)
+        return d1.merge(d2);
+    }
 }
