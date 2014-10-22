@@ -73,7 +73,7 @@ public class CardSoln3 {
  * A Card represents a playing card with rank and suit.
  */
 class Card {
-    int suit, rank;
+    public int suit, rank;
 
     static String[] suits = { "Clubs", "Diamonds", "Hearts", "Spades" };
     static String[] ranks = { "narf", "Ace", "2", "3", "4", "5", "6",
@@ -239,7 +239,7 @@ class Deck {
      * Shuffles the cards in a deck.
      */
     public void shuffle() {
-        for (int i=0; i<cards.length; i++) {
+        for (int i=0; i < cards.length; i++) {
             int j = randInt(i, cards.length-1);
             swapCards(i, j);
         }
