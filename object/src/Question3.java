@@ -11,7 +11,7 @@
  * @author Rafi Long
  *
  * Edits by Rafi:
- * -
+ * - created the new equals() that is static (see equals static method for documentation)
  */
 public class Question3 extends Complex {
 
@@ -23,7 +23,7 @@ public class Question3 extends Complex {
     }
 
     /**
-     * Class method versoin
+     * Class method version
      *
      * Edits by Rafi:
      * 1) Added that static keyword
