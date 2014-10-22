@@ -1,15 +1,15 @@
 /**
- * Answers to question 3 in ThinkAPJava chapter 15
+ * Answers to question 4 in ThinkAPJava chapter 15
  * http://www.greenteapress.com/thinkapjava/thinkapjava.pdf
  *
- * Question 3.1:
+ * Question 4.1:
  * Transform the methods in the Rational class from class methods to
  * object methods, and make the necessary changes in main.
  *
  *
  *
  *
- * Question 3.2:
+ * Question 4.2:
  * Make a few mistakes. Try invoking class methods as if they were object
  * methods and vice-versa. Try to get a sense for what is legal and what
  * is not, and for the error messages that you get when you mess up.
@@ -21,7 +21,7 @@
  * higher in the scope.
  *
  *
- * Question 3.3:
+ * Question 4.3:
  * Think about the pros and cons of class and object methods. Which
  * is more concise (usually)? Which is a more natural way to express
  * computation (or, maybe more fairly, what kind of computations can be
@@ -30,7 +30,7 @@
  * @author Rafi Long
  *
  * Edits by Rafi:
- * -
+ * - created all functions and class!
  */
 public class Rational {
 }
