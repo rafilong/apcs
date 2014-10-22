@@ -9,7 +9,7 @@ Documentation is in the source headers.
 
 This project correlates to the answers to the problems specified in ThinkAPJava. Link is the following: http://www.greenteapress.com/thinkapjava/thinkapjava.pdf
 
-Please note that question 4's class is called Rational. This is for the purpose of having actual descriptive object type names.
+Please note that question 4's class is called Rational and question 5 is named PokerHand. This is for the purpose of having actual descriptive object type names.
 
 ===
 
