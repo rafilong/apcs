@@ -52,7 +52,7 @@ public class ListOfNumbers {
      */
     public static void main(String args[]) {
         ListOfNumbers nums = new ListOfNumbers();
-        nums.readList();
+        nums.readList("src/InFile.txt");
     }
 
     public ListOfNumbers () {
@@ -91,11 +91,11 @@ public class ListOfNumbers {
      * Help from reading files from:
      * http://stackoverflow.com/questions/303913/java-reading-integers-from-a-file-into-an-array/304061#304061
      */
-    public void readList() {
+    public void readList(String filename) {
         // try catch for when the file is not found
         try {
             // creates a new scanner on the file
-            Scanner scanner = new Scanner(new File("src/InFile.txt"));
+            Scanner scanner = new Scanner(new File(filename));
 
             // searches for more ints in the file
             while (scanner.hasNextInt()) {
