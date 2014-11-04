@@ -13,4 +13,4 @@ Please note that question 4's class is called Rational and question 5 is named P
 
 ===
 
-This project isn't really a project, but instead a bunch of questions and answers about a piece of code. To simplify things, all of the questions and answers are in the block comments surrounding the code in question.
+This project isn't really a project, but instead a bunch of questions and answers about a pieces of code. To simplify things, all of the questions and answers are in the block comments surrounding the code in question.
