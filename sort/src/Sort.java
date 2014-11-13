@@ -39,7 +39,17 @@ public class Sort {
     public static int[] insertionSort(int[] nums) {
         int[] sort = nums.clone();
 
+        for (int i = 1; i < sort.length; i++) {
+            int j = i;
+            while (j > 0 && sort[j-1] > sort[j]) {
+                // swapping values in nums[j] and nums[j-1]
+                int temp = sort[j];
+                sort[j] = sort[j-1];
+                sort[j-1] = temp;
 
+                j--;
+            }
+        }
 
         return sort;
     }
