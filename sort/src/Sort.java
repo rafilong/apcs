@@ -14,6 +14,9 @@ import java.util.Arrays;
  * http://en.wikipedia.org/wiki/Bubble_sort
  * http://en.wikipedia.org/wiki/Insertion_sort
  * http://en.wikipedia.org/wiki/Selection_sort
+ *
+ * Explanation:
+ * See methods for exact documentation
  */
 public class Sort {
     /**
