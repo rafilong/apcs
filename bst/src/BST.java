@@ -5,9 +5,7 @@ public class BST<T extends Comparable<T>> {
 
     private BSTnode<T> root;
 
-    public BST() {
-
-    }
+    public BST() {}
 
     public BSTnode<T> getTree() {
         return root;
@@ -18,7 +16,7 @@ public class BST<T extends Comparable<T>> {
     }
 
     public void printTree() {
-
+        root.printTree();
     }
 
     public String toString() {
