@@ -1,7 +1,12 @@
 import java.util.ArrayList;
 
 /**
- * 
+ * Randp
+ * Code written by Rafi Long
+ *
+ * Instructions from http://paleyontology.com/AP_CS/randp.html
+ *
+ * See JavaDocs above methods for specific information
  */
 public class Randp {
 
