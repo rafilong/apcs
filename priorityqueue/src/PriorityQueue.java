@@ -1,8 +1,10 @@
-import java.util.ArrayDeque;
+import java.util.Vector;
 
 /**
  * Priority Queue Project
  * Coded by Rafi Long
+ *
+ * Methods with arrows have to be better than O(log n) time
  *
  * Required methods:
  * size()
@@ -24,6 +26,21 @@ import java.util.ArrayDeque;
  * toArray
  * merge
  */
-public class PriorityQueue {
+public class PriorityQueue<E extends Comparable> {
 
+    private Vector datum = new Vector();
+
+    private int size = 0;
+
+    public PriorityQueue() {
+
+    }
+
+    public int size() {
+        return this.size;
+    }
+
+    public boolean add(E c) {
+        
+    }
 }
