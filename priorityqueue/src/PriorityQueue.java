@@ -1,3 +1,5 @@
+import java.util.ArrayDeque;
+
 /**
  * Priority Queue Project
  * Coded by Rafi Long
@@ -22,6 +24,6 @@
  * toArray
  * merge
  */
-public class PriorityQueue {
-    
+public class PriorityQueue<T extends Comparable> extends ArrayDeque<T> {
+
 }
