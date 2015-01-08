@@ -6,14 +6,14 @@ import java.util.ArrayDeque;
  *
  * Required methods:
  * size()
- * add(E c)
+ * add(E c) <--
  * priorityQueue()
- * remove(Object o)
- * poll()
+ * remove(Object o) <--
+ * poll() <--
  * clear()
  * reverseComparator()
- * contains(Object o)
- * peek()
+ * contains(Object o) <--
+ * peek() <--
  *
  * Extra credit methods:
  * other constructors
@@ -24,6 +24,6 @@ import java.util.ArrayDeque;
  * toArray
  * merge
  */
-public class PriorityQueue<T extends Comparable> extends ArrayDeque<T> {
+public class PriorityQueue {
 
 }
