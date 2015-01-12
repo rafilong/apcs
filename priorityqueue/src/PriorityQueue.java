@@ -7,15 +7,16 @@ import java.util.Vector;
  * Methods with arrows have to be better than O(log n) time
  *
  * Required methods:
- * size()
- * add(E c) <--
  * priorityQueue()
- * remove(Object o) <--
- * poll() <--
- * clear()
- * reverseComparator()
- * contains(Object o) <--
- * peek() <--
+ * size() <-- O(1)
+ * add(E c) <-- O(log n)
+ * remove(Object o) <-- O(n)
+ * poll() <-- O(log n)
+ * clear() <-- O(n)
+ * reverseComparator() <-- O(n)
+ *   changes the state of some instance variable
+ * contains(Object o) <-- O(n)
+ * peek() <-- O(log n)
  *
  * Extra credit methods:
  * other constructors
@@ -32,6 +33,8 @@ public class PriorityQueue<E extends Comparable> {
 
     private int size = 0;
 
+    boolean maxTop = true;
+
     public PriorityQueue() {
 
     }
@@ -42,5 +45,29 @@ public class PriorityQueue<E extends Comparable> {
 
     public boolean add(E c) {
         
+    }
+
+    public boolean remove(E c) {
+        
+    }
+
+    public E poll() {
+
+    }
+
+    public void clear() {
+
+    }
+
+    public void reverseComparator() {
+        maxTop = !maxTop;
+    }
+
+    public boolean contains(E c) {
+
+    }
+
+    public E peek() {
+
     }
 }
