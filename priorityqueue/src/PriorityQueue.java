@@ -27,47 +27,104 @@ import java.util.Vector;
  * toArray
  * merge
  */
-public class PriorityQueue<E extends Comparable> {
+public class PriorityQueue<T extends Comparable> {
 
-    private Vector datum = new Vector();
+    private BST data;
 
     private int size = 0;
 
     boolean maxTop = true;
 
-    public PriorityQueue() {
+    public static void main(String args[]) {
+        PriorityQueue queue = new PriorityQueue();
+        Randp rands = new Randp(20);
 
+        for (int i = 0; i < 20; i++) {
+            queue.data.getTree().insert(rands.nextInt());
+        }
+
+        queue.data.printTree();
+        System.out.println(queue.poll());
+        queue.data.printTree();
+        queue.reverseComparator();
+        queue.remove(1);
+        System.out.println(queue.poll());
+        queue.data.printTree();
+        System.out.println(queue.poll());
+        queue.data.printTree();
+    }
+
+    public PriorityQueue() {
+        data = new BST(null);
     }
 
     public int size() {
         return this.size;
     }
 
-    public boolean add(E c) {
-        
+    public boolean add(T datum) {
+        data.getTree().insert(datum);
+        size++;
+        return true;
     }
 
-    public boolean remove(E c) {
-        
+    public boolean remove(T datum) {
+        if (data.getTree().remove(datum)) {
+            size--;
+            while (data.getTree().remove(datum)) {
+                size--;
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public E poll() {
-
+    public T poll() {
+        if (maxTop) {
+            BSTnode current = data.getTree();
+            while (current.isRightDead()) {
+                current = current.getRight();
+            }
+            T datum = (T) current.getDatum();
+            current.remove();
+            return (T) current.getDatum();
+        } else {
+            BSTnode current = data.getTree();
+            while (current.isLeftDead()) {
+                current = current.getLeft();
+            }
+            T datum = (T) current.getDatum();
+            current.remove();
+            return datum;
+        }
     }
 
     public void clear() {
-
+        data = new BST(null);
     }
 
     public void reverseComparator() {
         maxTop = !maxTop;
     }
 
-    public boolean contains(E c) {
-
+    public boolean contains(T datum) {
+        return data.getTree().contains(datum);
     }
 
-    public E peek() {
-
+    public T peek() {
+        if (maxTop) {
+            BSTnode current = data.getTree();
+            while (current.isRightDead()) {
+                current = current.getRight();
+            }
+            return (T) current.getDatum();
+        } else {
+            BSTnode current = data.getTree();
+            while (current.isLeftDead()) {
+                current = current.getLeft();
+            }
+            return (T) current.getDatum();
+        }
     }
 }
