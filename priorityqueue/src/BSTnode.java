@@ -126,26 +126,33 @@ public class BSTnode<T extends Comparable> {
      * http://en.wikipedia.org/wiki/Binary_search_tree#Deletion
      */
     public void remove() {
+        // if there are no children
         if (isLeaf()) {
             dead = true;
+        // if there is only one child and it is the right
         } else if (isLeftDead()) {
             replace(this.right);
+        // if there is only one child and it is the left
         } else if (isRightDead()) {
             replace(this.left);
+        // if there are two children
         } else {
-            if (this.left.datum.compareTo(this.right.datum) < 0 ) {
-                this.datum = this.left.datum;
-                // needs to change children ?
-                this.left.remove();
-            } else {
-                this.datum = this.right.datum;
-                this.right.remove();
+            // the in order successor of the node is the left subtree's rightmost child or the right subtree's leftmost
+            // this could be slightly optimized by moving up the value that is the deepest, making the tree more balanced,
+            // but I've spent waaay too much time on this tonight and I don't want to work on fixing more bugs
+            BSTnode<T> rightMost = left.getRight();
+            for (int i = 0; i < left.depth(); i++) {
+                if (rightMost.getRight() != null) rightMost = rightMost.getRight();
             }
+            this.datum = rightMost.datum;
+            rightMost.remove();
         }
     }
 
     /**
      * Removes one node with the value of datum, and returns boolean if no nodes are deleted
+     * It does this by searching for the value in the tree, and then calling remove on the node when it is found
+     *
      * @return whether a node was deleted or not
      */
     public boolean remove(T datum) {
@@ -166,8 +173,8 @@ public class BSTnode<T extends Comparable> {
      * @param node the node to replace the current one
      */
     public void replace(BSTnode<T> node) {
-        BSTnode right = node.getRight();
-        BSTnode left = node.getLeft();
+        BSTnode<T> right = node.getRight();
+        BSTnode<T> left = node.getLeft();
         this.datum = node.getDatum();
         this.right = right;
         this.left = left;

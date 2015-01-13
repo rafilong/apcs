@@ -6,17 +6,17 @@ import java.util.Vector;
  *
  * Methods with arrows have to be better than O(log n) time
  *
- * Required methods:
+ * Required methods (required time signature) (my best case time signature):
  * priorityQueue()
- * size() <-- O(1)
- * add(E c) <-- O(log n)
- * remove(Object o) <-- O(n)
- * poll() <-- O(log n)
- * clear() <-- O(n)
- * reverseComparator() <-- O(n)
+ * size() <-- O(1) O(1)
+ * add(E c) <-- O(log n) O(log n)
+ * remove(Object o) <-- O(n) O(log n)
+ * poll() <-- O(log n) O(log n)
+ * clear() <-- O(n) O(1)
+ * reverseComparator() <-- O(n) O(1)
  *   changes the state of some instance variable
- * contains(Object o) <-- O(n)
- * peek() <-- O(log n)
+ * contains(Object o) <-- O(n) O(log n)
+ * peek() <-- O(log n) O(log n)
  *
  * Extra credit methods:
  * other constructors
@@ -28,11 +28,13 @@ import java.util.Vector;
  * merge
  */
 public class PriorityQueue<T extends Comparable> {
-
+    /** All of the data of the queue */
     private BST data;
 
+    /** The size of the queue, which is incremented when the size is changed. This keeps time complexities at O(1) */
     private int size = 0;
 
+    /** Whether the maximum value is considered the top or the bottom of the queue */
     boolean maxTop = true;
 
     public static void main(String args[]) {
@@ -43,14 +45,29 @@ public class PriorityQueue<T extends Comparable> {
             queue.data.getTree().insert(rands.nextInt());
         }
 
+        System.out.println("The orignal tree, created by randomly inserting the numbers 1 through 20");
         queue.data.printTree();
-        System.out.println(queue.poll());
+        System.out.println();
+
+        System.out.println("Poll with max top set as true is called and the result is: " + queue.poll());
         queue.data.printTree();
+        System.out.println();
+
+        queue.remove(4);
+        System.out.println("The value of 4 is removed");
+        queue.data.printTree();
+        System.out.println();
+
+        queue.add(23);
+        System.out.println("The value of 23 is added");
+        queue.data.printTree();
+        System.out.println();
+
         queue.reverseComparator();
-        queue.remove(1);
-        System.out.println(queue.poll());
-        queue.data.printTree();
-        System.out.println(queue.poll());
+        System.out.println("The comparator is reversed");
+        System.out.println();
+
+        System.out.println("Peek is called and the result is: " + queue.peek());
         queue.data.printTree();
     }
 
@@ -83,15 +100,15 @@ public class PriorityQueue<T extends Comparable> {
     public T poll() {
         if (maxTop) {
             BSTnode current = data.getTree();
-            while (current.isRightDead()) {
+            while (!current.isRightDead()) {
                 current = current.getRight();
             }
             T datum = (T) current.getDatum();
             current.remove();
-            return (T) current.getDatum();
+            return datum;
         } else {
             BSTnode current = data.getTree();
-            while (current.isLeftDead()) {
+            while (!current.isLeftDead()) {
                 current = current.getLeft();
             }
             T datum = (T) current.getDatum();
