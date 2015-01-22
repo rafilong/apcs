@@ -1,5 +1,3 @@
-import java.util.Vector;
-
 /**
  * Priority Queue Project
  * Coded by Rafi Long
@@ -38,7 +36,7 @@ public class PriorityQueue<T extends Comparable> {
     boolean maxTop = true;
 
     public static void main(String args[]) {
-        PriorityQueue queue = new PriorityQueue();
+        PriorityQueue<Integer> queue = new PriorityQueue<Integer>();
         Randp rands = new Randp(20);
 
         for (int i = 0; i < 20; i++) {
