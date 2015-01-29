@@ -12,9 +12,9 @@ public class Display extends JComponent {
 
     public Display() {
         try {
-            yes = ImageIO.read(new File("src/yes.png"));
-            no = ImageIO.read(new File("src/no.png"));
-            time = ImageIO.read(new File("src/time.png"));
+            yes = ImageIO.read(Main.class.getResource("yes.png"));
+            no = ImageIO.read(Main.class.getResource("no.png"));
+            time = ImageIO.read(Main.class.getResource("time.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
