@@ -1,7 +1,10 @@
 /**
- * A edge object for a graph
+ * A one directional edge object for the graph
  */
 public class Edge {
+    /** The node that the edge leads from */
+    private Node from;
+
     /** The node the edge leads to */
     private Node to;
 
@@ -12,7 +15,8 @@ public class Edge {
      * Default empty constructor for edge
      * @param to the node to be connected to
      */
-    public Edge(Node to, int weight) {
+    public Edge(Node from, Node to, int weight) {
+        this.from = from;
         this.to = to;
         this.weight = weight;
     }
@@ -39,10 +43,34 @@ public class Edge {
     }
 
     /**
+     * Default getter for from
+     * @return the node from
+     */
+    public Node getFrom() {
+        return from;
+    }
+
+    /**
+     * Default setter for from
+     * @param from the node from
+     */
+    public void setFrom(Node from) {
+        this.from = from;
+    }
+
+    /**
      * Default getter for weight
      * @return the weight of the edge
      */
     public int getWeight() {
         return weight;
+    }
+
+    /**
+     * A toString for edge
+     * @return prints the edges information
+     */
+    public String toString() {
+        return from.getName() + ", " + to.getName() + ", " + weight;
     }
 }

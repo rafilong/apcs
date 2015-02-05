@@ -1,37 +1,71 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.UUID;
+
 /**
  * A node object for a graph that supports the add method
  */
 public class Node {
     /** The edge in the graph */
-    private Edge connect = null;
+    private ArrayList<Edge> edges = new ArrayList<Edge>();
+
+    /** A name for debugging purposes */
+    private String name;
 
     /**
-     * The default constructor for node
+     * A constructor for node
+     * Randomly generates the name of the node
      */
     public Node() {
+        name = UUID.randomUUID().toString().substring(0, 6).toUpperCase();
     }
 
     /**
-     * The default constructor for node
-     * @param connect the edge to connect to
+     * A constructor for node
+     * @param name the name of the node
      */
-    public Node(Edge connect) {
-        this.connect = connect;
+    public Node(String name) {
+        this.name = name;
     }
 
     /**
-     * The default getter for connect
-     * @return the edge connect
+     * A constructor for node
+     * @param edges the edge to connect to
      */
-    public Edge getConnect() {
-        return connect;
+    public Node(Edge[] edges) {
+        Collections.addAll(this.edges, edges);
     }
 
     /**
-     * The default setter for connect
-     * @param connect the edge connect
+     * The default getter for edge
+     * @return the edge that connects
      */
-    public void setConnect(Edge connect) {
-        this.connect = connect;
+    public Edge[] getEdges() {
+        return (Edge[]) edges.toArray();
+    }
+
+    /**
+     * Adds an already created edge
+     * @param edge the edge to add to connect
+     */
+    public void addEdge(Edge edge) {
+        edges.add(edge);
+    }
+
+    /**
+     * Creates an edge and adds it
+     * @param to the node to connect to
+     * @param weight the weight of the edge
+     */
+    public void addEdge(Node to, int weight) {
+        edges.add(new Edge(this, to, weight));
+    }
+
+    /**
+     * Returns the name of the node
+     * @return the name of the node
+     */
+    public String getName() {
+        return name;
     }
 }
