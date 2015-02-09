@@ -34,7 +34,17 @@ public class Graph {
      * @param matrix an adjacency matrix
      */
     public Graph(int[][] matrix) {
-        
+        for (int[] node : matrix) {
+            nodes.add(new Node());
+        }
+
+        for (int n = 0; n < matrix.length; n++) {
+            for (int e = 0; e < matrix.length; e++) {
+                if (matrix[n][e] != -1) {
+                    nodes.get(n).addEdge(nodes.get(e), matrix[n][e]);
+                }
+            }
+        }
     }
 
     /**
