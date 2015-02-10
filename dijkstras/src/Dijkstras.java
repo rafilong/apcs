@@ -107,6 +107,8 @@ public class Dijkstras {
         }
 
         unselected = new ArrayList<DijNode>(Arrays.asList((DijNode[]) selected.toArray()));
+        selected = new ArrayList<DijNode>();
+        setStart();
     }
 
     public void calculate() {
@@ -117,9 +119,7 @@ public class Dijkstras {
     }
 
     public void updateUnselected() {
-        System.out.print("Current selected nodes: ");
         for (DijNode node : selected) {
-            System.out.print(node.getName() + "(" + node.getEdges().length + ") ");
             for (int e = 0; e < node.getEdges().length; e++) {
 
                 DijNode to = (DijNode) node.getEdges()[e].getTo();
@@ -129,7 +129,6 @@ public class Dijkstras {
                 }
             }
         }
-        System.out.println();
     }
 
     public void selectMin() {
@@ -146,6 +145,7 @@ public class Dijkstras {
     }
 
     public void printResult() {
+        System.out.println("The results of Dijkstra in format Node | Closest node on path | Total distance to node");
         for (DijNode node : (DijNode[]) graph.getNodes()) {
             System.out.print(node.getName() + " ");
             if (node.getClosestFrom() == null) {

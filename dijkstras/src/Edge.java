@@ -71,6 +71,6 @@ public class Edge {
      * @return prints the edges information
      */
     public String toString() {
-        return from.getName() + ", " + to.getName() + ", " + weight;
+        return from.getName() + " to  " + to.getName() + " with weight " + weight;
     }
 }
