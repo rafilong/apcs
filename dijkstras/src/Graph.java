@@ -4,24 +4,24 @@ import java.util.Collections;
 /**
  * A class that uses the Node and Edge class to create a graph
  */
-public class DijGraph {
+public class Graph {
     /** The start of the graph */
-    private DijNode start;
+    private Node start;
 
     /** The nodes in the graph */
-    private ArrayList<DijNode> nodes = new ArrayList<DijNode>();
+    private ArrayList<Node> nodes = new ArrayList<Node>();
 
     /**
      * An empty constructor for DijGraph
      */
-    public DijGraph() {}
+    public Graph() {}
 
     /**
      * A constructor for DijGraph with all of the nodes
      * @param start the node to start from
      * @param nodes all of the nodes in the graph
      */
-    public DijGraph(DijNode start, DijNode[] nodes) {
+    public Graph(Node start, Node[] nodes) {
         this.start = start;
         Collections.addAll(this.nodes, nodes);
     }
@@ -30,7 +30,7 @@ public class DijGraph {
      * A constructor for DijGraph with the start node
      * @param start the node to start from
      */
-    public DijGraph(DijNode start) {
+    public Graph(Node start) {
         this.start = start;
     }
 
@@ -38,9 +38,9 @@ public class DijGraph {
      * A constructor for DijGraph that uses a matrix
      * @param matrix an adjacency matrix
      */
-    public DijGraph(int[][] matrix) {
+    public Graph(int[][] matrix) {
         for (int[] node : matrix) {
-            nodes.add(new DijNode());
+            nodes.add(new Node());
         }
 
         for (int n = 0; n < matrix.length; n++) {
@@ -56,21 +56,31 @@ public class DijGraph {
      * Returns the nodes
      * @return the nodes in an array
      */
-    public DijNode[] getNodes() {
-        DijNode[] aNodes = new DijNode[nodes.size()];
+    public Node[] getNodes() {
+        if (nodes.get(0) instanceof DijNode) {
+            DijNode[] aNodes = new DijNode[nodes.size()];
 
-        for (int i = 0; i < nodes.size(); i++) {
-            aNodes[i] = nodes.get(i);
+            for (int i = 0; i < nodes.size(); i++) {
+                aNodes[i] = (DijNode) nodes.get(i);
+            }
+
+            return aNodes;
+        } else {
+            Node[] aNodes = new Node[nodes.size()];
+
+            for (int i = 0; i < nodes.size(); i++) {
+                aNodes[i] = nodes.get(i);
+            }
+
+            return aNodes;
         }
-
-        return aNodes;
     }
 
     /**
      * Adds a node to the ArrayList of nodes
      * @param node the node to be added
      */
-    public void addNode(DijNode node) {
+    public void addNode(Node node) {
         nodes.add(node);
     }
 
@@ -78,7 +88,7 @@ public class DijGraph {
      * Sets the starting node for the graph
      * @param start the starting node
      */
-    public void setStart(DijNode start) {
+    public void setStart(Node start) {
         this.start = start;
     }
 
