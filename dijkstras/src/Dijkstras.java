@@ -6,13 +6,13 @@ import java.util.Arrays;
  */
 public class Dijkstras {
 
-    private Graph graph;
+    private DijGraph graph;
 
     private ArrayList<DijNode> unselected;
 
     private ArrayList<DijNode> selected = new ArrayList<DijNode>();
 
-    public Dijkstras(Graph graph) {
+    public Dijkstras(DijGraph graph) {
         this.graph = graph;
 
         unselected = new ArrayList<DijNode>(Arrays.asList((DijNode[]) graph.getNodes()));
@@ -21,16 +21,18 @@ public class Dijkstras {
     }
 
     public Dijkstras(int[][] matrix) {
-        String[] abc = new String[]{"a", "b", "c", "d", "e", "f", "g", "h"};
-        graph = new Graph(new Node(abc[0]));
-        for (int i = 1; i < matrix.length; i++) {
-            graph.addNode(new Node(abc[i]));
+        String[] names = new String[]{"a", "b", "c", "d", "e", "f", "g", "h"};
+
+        graph = new DijGraph();
+        for (int i = 0; i < matrix.length; i++) {
+            graph.addNode(new DijNode(names[i]));
         }
+        graph.setStart(graph.getNodes()[6]); // starting point is bugged
 
         for (int n = 0; n < matrix.length; n++) {
             for (int e = 0; e < matrix.length; e++) {
                 if (matrix[n][e] != -1) {
-                    graph.getNodes()[n].addEdge(graph.getNodes()[e], matrix[n][e]); // check this
+                    graph.getNodes()[n].addEdge(graph.getNodes()[e], matrix[n][e]);
                 }
             }
         }
@@ -78,7 +80,7 @@ public class Dijkstras {
 
     public void printResult() {
         for (DijNode node : selected) {
-            System.out.println(node.getName() + " " + node.getClosestFrom());
+            System.out.println(node.getName() + " " + node.getClosestFrom().getName());
         }
     }
 }

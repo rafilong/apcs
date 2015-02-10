@@ -7,10 +7,10 @@ import java.util.UUID;
  */
 public class Node {
     /** The edge in the graph */
-    private ArrayList<Edge> edges = new ArrayList<Edge>();
+    protected ArrayList<Edge> edges = new ArrayList<Edge>();
 
     /** A name for debugging purposes */
-    private String name;
+    protected String name;
 
     /**
      * A constructor for node
@@ -41,7 +41,11 @@ public class Node {
      * @return the edge that connects
      */
     public Edge[] getEdges() {
-        return (Edge[]) edges.toArray();
+        Edge[] aEdges = new Edge[edges.size()];
+        for (int i = 0; i < edges.size(); i++) {
+            aEdges[i] = edges.get(i);
+        }
+        return aEdges;
     }
 
     /**

@@ -4,38 +4,43 @@ import java.util.Collections;
 /**
  * A class that uses the Node and Edge class to create a graph
  */
-public class Graph {
+public class DijGraph {
     /** The start of the graph */
-    private Node start;
+    private DijNode start;
 
     /** The nodes in the graph */
-    private ArrayList<Node> nodes = new ArrayList<Node>();
+    private ArrayList<DijNode> nodes = new ArrayList<DijNode>();
 
     /**
-     * A constructor for Graph with all of the nodes
+     * An empty constructor for DijGraph
+     */
+    public DijGraph() {}
+
+    /**
+     * A constructor for DijGraph with all of the nodes
      * @param start the node to start from
      * @param nodes all of the nodes in the graph
      */
-    public Graph(Node start, Node[] nodes) {
+    public DijGraph(DijNode start, DijNode[] nodes) {
         this.start = start;
         Collections.addAll(this.nodes, nodes);
     }
 
     /**
-     * A constructor for Graph with the start node
+     * A constructor for DijGraph with the start node
      * @param start the node to start from
      */
-    public Graph(Node start) {
+    public DijGraph(DijNode start) {
         this.start = start;
     }
 
     /**
-     * A constructor for Graph that uses a matrix
+     * A constructor for DijGraph that uses a matrix
      * @param matrix an adjacency matrix
      */
-    public Graph(int[][] matrix) {
+    public DijGraph(int[][] matrix) {
         for (int[] node : matrix) {
-            nodes.add(new Node());
+            nodes.add(new DijNode());
         }
 
         for (int n = 0; n < matrix.length; n++) {
@@ -51,8 +56,8 @@ public class Graph {
      * Returns the nodes
      * @return the nodes in an array
      */
-    public Node[] getNodes() {
-        Node[] aNodes = new Node[nodes.size()];
+    public DijNode[] getNodes() {
+        DijNode[] aNodes = new DijNode[nodes.size()];
 
         for (int i = 0; i < nodes.size(); i++) {
             aNodes[i] = nodes.get(i);
@@ -65,8 +70,16 @@ public class Graph {
      * Adds a node to the ArrayList of nodes
      * @param node the node to be added
      */
-    public void addNode(Node node) {
+    public void addNode(DijNode node) {
         nodes.add(node);
+    }
+
+    /**
+     * Sets the starting node for the graph
+     * @param start the starting node
+     */
+    public void setStart(DijNode start) {
+        this.start = start;
     }
 
     /**
