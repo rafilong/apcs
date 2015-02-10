@@ -9,7 +9,7 @@ public class Graph {
     private Node start;
 
     /** The nodes in the graph */
-    private ArrayList<Node> nodes;
+    private ArrayList<Node> nodes = new ArrayList<Node>();
 
     /**
      * A constructor for Graph with all of the nodes
@@ -52,7 +52,13 @@ public class Graph {
      * @return the nodes in an array
      */
     public Node[] getNodes() {
-        return (Node[]) nodes.toArray();
+        Node[] aNodes = new Node[nodes.size()];
+
+        for (int i = 0; i < nodes.size(); i++) {
+            aNodes[i] = nodes.get(i);
+        }
+
+        return aNodes;
     }
 
     /**
@@ -82,5 +88,13 @@ public class Graph {
                 System.out.println(edge);
             }
         }
+    }
+
+    /**
+     * Returns the start node of the graph
+     * @return the start node of the graph
+     */
+    public Node getStartNode() {
+        return start;
     }
 }
