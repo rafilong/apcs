@@ -2,6 +2,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
+ * MathSet
+ * Code written by Rafi Long
+ * See method documentation for specific information
+ *
  * A class that uses the Node and Edge class to create a graph
  */
 public class Graph {

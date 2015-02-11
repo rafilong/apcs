@@ -1,4 +1,8 @@
 /**
+ * MathSet
+ * Code written by Rafi Long
+ * See method documentation for specific information
+ *
  * Created to test Dijkstras.java
  */
 public class Main {

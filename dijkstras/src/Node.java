@@ -3,6 +3,10 @@ import java.util.Collections;
 import java.util.UUID;
 
 /**
+ * MathSet
+ * Code written by Rafi Long
+ * See method documentation for specific information
+ *
  * A node object for a graph that supports the add method
  */
 public class Node {

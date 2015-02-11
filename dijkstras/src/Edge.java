@@ -1,4 +1,8 @@
 /**
+ * MathSet
+ * Code written by Rafi Long
+ * See method documentation for specific information
+ *
  * A one directional edge object for the graph
  */
 public class Edge {

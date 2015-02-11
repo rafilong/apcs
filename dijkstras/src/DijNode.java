@@ -2,7 +2,11 @@ import java.util.Collections;
 import java.util.UUID;
 
 /**
- * A specific node object that stores information relevant to Dijkstras algorithm
+ * MathSet
+ * Code written by Rafi Long
+ * See method documentation for specific information
+ * 
+ * A specific node object that stores information relevant to Dijkstra's algorithm
  */
 public class DijNode extends Node {
     /** The shortest distance from the start node to this one */

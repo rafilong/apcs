@@ -2,7 +2,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
+ * MathSet
+ * Code written by Rafi Long
+ * See method documentation for specific information
  * 
+ * Implements the Dijkstra's algorithm
  */
 public class Dijkstras {
     /** The graph where the shortest paths are to be found */
