@@ -28,7 +28,7 @@ public class Main {
                 {4, 9, n, n, n, n, n, n}}  //16 H  2
                 , 6, new String[]{"a", "b", "c", "d", "e", "f", "g", "h"});
 
-        // the shortest paths are automatically
+        // the shortest paths are automatically found on the initialization of the object
 
         // prints the result of the graph
         test.printResult();
@@ -51,7 +51,7 @@ public class Main {
                 4, 9, n, n, n, n, n, n}   //16 H  2
                 , 6, new String[]{"a", "b", "c", "d", "e", "f", "g", "h"});
 
-        // the shortest paths are automatically
+        // the shortest paths are automatically found on the initialization of the object
 
         // prints the result of the graph
         test.printResult();
