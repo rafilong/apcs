@@ -1,0 +1,123 @@
+APCS Take Home Quiz #1
+Rafi Long
+
+===
+
+Inheritance
+Keyword: extends, implements
+Meaning: Inheritance is a predetermined system of taking methods from other classes that you know are the common root of that class. By using the extends and implements keywords, polymorphism is able to exist, as they are recognized by the compiler as being children of the specified parent class. An example are classes such as ArrayList inherit from Collection, which allows programmers to know that ArrayList supports the methods that Collection does, allowing a variable of type Collection to be assigned a value of ArrayList.
+
+public class DijkstraNode extends Node {
+  // code goes here
+  // Having DijkstraNode extend Node allows to to avoid rewriting the methods you know will be the same in each class,
+  // such as getEdge, but allows you to add more code to support a larger number of requirements.
+}
+
+===
+
+Delegation
+Meaning: Delegation is assigning methods to call other methods that solve the problem instead of rewriting the code. This means when you want to add new features to a system that you use a lot, you can change it in the one place that all other methods delegate instead of having to hunt down each case.
+
+int convertTwo(String x, String y) {
+  return convert(x) + convert(y);
+  // This method delegates converting the Strings to ints to the method convert, and only adds them together. A more
+  // direct form of delegation would be invoking a method that did the exact same thing and just returning.
+}
+
+===
+
+Polymorphism
+Meaning: Polymorphism is using the fact that parent classes are established in classes that inherit to have variables set as one class contain values corresponding to children classes. With casting, this allows you to access methods that the declared variable wouldn't yet you. However, if the variable doesn't contain a value of that type it will crash the program.
+
+public static Node getPath(DijkstraNode blah) {
+  Node node = blah;
+  return ((DijkstraNode) node).getClosest();
+  // Note that this is not a good example, as there is no point in creating a new node called blah. However, if the
+  // nodes were declared ahead of time this would make perfect sense. However, that would take a whole class of
+  // information to provide context, so I wrote this abbreviated example.
+}
+
+===
+
+Overloading
+Meaning: Overloading is creating another method that is the same name, and has to differentiate in the arguments. This lets to you create similar methods that differentiate in what type of arguments they take, which allows programmers using your code to have more flexibility.
+
+public static void printNewLine(String[] values) {
+  for (String value : values) {
+    System.out.println(value);
+  }
+}
+
+public static void printNewLine(int[] values) {
+  for (int value : values) {
+    System.out.println(value);
+  }
+  // Now developers can print values on new lines with both ints and Strings without having to write their own method
+  // that converts the ints to Strings.
+}
+
+===
+
+Public Interface of a class
+Keyword: public
+Meaning: The public interface of a class are the public methods that allow other outside classes to interact and use that class. It is a way to reference the methods that allow changes to be made and the class to be used.
+
+public class Node {
+  private int x;
+  private int y;
+
+  public Node(int x, int y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  public void getX() { return this.x; }
+  public void getY() { return this.y; }
+
+  // In this class the constructor, getX, getY are the public interface of the class. x and y are not included in
+  // the public interface of the class as they are private, and are accessed through other methods in the public
+  // interface of the class.
+}
+
+===
+
+Interface
+Keyword: interface
+Meaning: An interface is a way to specify methods, unimplemented methods, that classes that implement it must implement. This allows programmers who see the class extends that interface to know which methods will be implemented without having to read through each method description.
+
+public interface Equals {
+  /**
+   * Returns true if the two objects specified in the invocation is true.
+   */
+  public abstract boolean isEqual(Object that);
+
+  // This interface allows programmers who write classes that extend it to easily indicate that their objects can be
+  // compared. It also sets a styleguide for what this method should be named, as inherited methods names can't be
+  // changed.
+}
+
+===
+
+Encapsulation
+Keyword: private
+Meaning: 
+
+===
+
+Invariant
+Meaning: 
+In terms of loops:
+In terms of classes:
+
+===
+
+Linked List
+Class name: LinkedList
+Meaning: 
+
+===
+
+Iterator
+Keyword: for, Iterator
+Meaning: 
+
