@@ -100,24 +100,60 @@ public interface Equals {
 
 Encapsulation
 Keyword: private
-Meaning: 
+Meaning: Encapsulation is creating methods to make the class easier to understand, or in order to avoid repeating the same task multiple times. This usually does not contribute to the interface of the class, and is such a private method. It only exists to make the public methods easier to write and understand.
+
+public static void printWords(String[] words) {
+  for (String word : words) {
+    newLineWord(word);
+  }
+}
+
+private static void newLineWord(String word) {
+  System.out.println(word);
+}
 
 ===
 
 Invariant
-Meaning: 
-In terms of loops:
-In terms of classes:
+Meaning: An invariant is something remains constant, and allows debugging to occur or even early termination so the program doesn't continue to use resources after the bug has been discovered.
+In terms of loops: In loops this might be a combination of the numbers involved that always remains constant unless the program is broken.
+In terms of classes: In classes this may be a value or several values that do not change in the course of the class, or serve as constants.
+
+public static void main(String args[]) {
+  int k = 10;
+  for (int i = 0; i < 10; i++) {
+    k--;
+    // In this loop i + k is an invariant, as it always equals 10.
+  }
+}
 
 ===
 
 Linked List
 Class name: LinkedList
-Meaning: 
+Meaning: A linked list is a type of data structure where each value is stored in it's own object, and the object contains a reference to the next object, until the reference is null, in which the list is ended. It is very easy to add elements to this list, as it only involves changing one reference, and is similarly easy to remove elements.
+
+LinkedList<String> list = new LinkedList<String>();
+// I just created a new LinkedList. Perfect example of a linked list. I'll do some more though.
+
+list.add("very");
+list.add("amazing");
+list.add("LinkedList");
 
 ===
 
 Iterator
-Keyword: for, Iterator
-Meaning: 
+Keyword: for
+Meaning: An iterator repeats and performs operations that involve what it is repeating on. This could include lists, maps, or sets.
 
+Iterator iterator = Set.iterator();
+
+===
+
+List Iterator
+Keyword: for, Iterator
+Meaning: A list iterator repeats for a list and performs operations that involve the list it is repeating for.
+
+for (int i = 0; i < 10; i++) {
+  System.out.println(array[i]);
+}
